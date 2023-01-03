@@ -1,5 +1,5 @@
-import { Home } from "../../pages/Home.js";
-import { Pricing } from "../../pages/Pricing.js";
+import { Home } from "../../pages/home.js";
+import { Pricing } from "../../pages/pricing.js";
 import { Box } from "./Box.js";
 
 export const Layout = ({ children }) => (
