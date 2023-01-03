@@ -25,6 +25,7 @@ function MyApp({ Component, pageProps }) {
   return (
     // 2. Use at the root of your app
     <>
+
     <NextThemesProvider
       defaultTheme="system"
       attribute="class"
@@ -47,23 +48,7 @@ function MyApp({ Component, pageProps }) {
   content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover'
 />
       </Head>
-      <Script
-        strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=G-1E858JGC2R`}
-      />
-      <Script
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-1E858JGC2R', {
-              page_path: window.location.pathname,
-            });
-          `,
-        }}
-      />
+   
   </>
   );
 }
