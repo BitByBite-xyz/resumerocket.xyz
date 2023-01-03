@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar, Button, Link, Text } from "@nextui-org/react";
 import { AcmeLogo } from "./Logo.js";
 
-export const CustomNavBar = () => {
+export default function CustomNavBar() {
   return (
     <Navbar isCompact isBordered variant="sticky">
       <Navbar.Brand>
@@ -30,4 +30,4 @@ export const CustomNavBar = () => {
       </Navbar.Content>
     </Navbar>
   );
-};
+}
