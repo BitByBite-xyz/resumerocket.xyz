@@ -21,9 +21,7 @@ export default function PriceSelection(props) {
         <Spacer y={1} />
         <Text>{props.description}</Text>
         <Spacer y={1.5} />
-        <Button size="lg" color="secondary">
-          Select
-        </Button>
+        <Button size="lg">Select</Button>
       </Card.Body>
     </Card>
   );
