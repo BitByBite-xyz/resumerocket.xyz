@@ -11,9 +11,9 @@ export default function PriceSelection(props) {
             </Text>
           </Grid>
           <Grid xs={12}>
-            <Text h2>$4.99</Text>
+            <Text h2>{props.price}</Text>
             <Text css={{ marginLeft: "5px", marginTop: "17px" }}>
-              / cover letter
+              / {props.amount}
             </Text>
             {/* <Text>{props.price}</Text> */}
           </Grid>

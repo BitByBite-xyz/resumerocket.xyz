@@ -1,6 +1,7 @@
 import { Grid, Text, Spacer } from "@nextui-org/react";
 import { Box } from "../components/layout/Box.js";
 import PriceSelection from "../components/pricing/PriceSelection.js";
+import CustomNavBar from "../components/navbar/CustomNavBar.js";
 
 export default function Pricing() {
   return (
@@ -10,14 +11,16 @@ export default function Pricing() {
         <Grid xs={4}>
           <PriceSelection
             plan="Basic"
-            price="$4.99 / cover letter"
+            price="$4.99"
+            amount="cover letter"
             description="A fixed price for each custom-tailored cover letters generated at the power of a few clicks."
           />
         </Grid>
         <Grid xs={4}>
           <PriceSelection
             plan="Premium"
-            price="$29.99 / month"
+            price="$29.99"
+            amount="month"
             description="Unlimited custom-tailored cover letter generated at the power of a few clicks."
           />
         </Grid>
