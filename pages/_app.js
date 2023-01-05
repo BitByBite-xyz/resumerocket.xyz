@@ -1,5 +1,11 @@
 // 1. import `NextUIProvider` component
-import { createTheme, NextUIProvider, Link } from "@nextui-org/react";
+import {
+  createTheme,
+  NextUIProvider,
+  Link,
+  StyledGridContainer,
+  Grid,
+} from "@nextui-org/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { CustomNavBar } from "../components/navbar/CustomNavBar.js";
 import Head from "next/head";
@@ -33,9 +39,17 @@ function MyApp({ Component, pageProps }) {
         }}
       >
         <NextUIProvider>
-          <Link href="/home">Home</Link>
-          <br />
-          <Link href="/pricing">Pricing</Link>
+          <Grid.Container>
+            <Grid xs={2}>
+              <Link href="/home">Home</Link>
+            </Grid>
+            <Grid xs={2}>
+              <Link href="/pricing">Pricing</Link>
+            </Grid>
+            <Grid xs={2}>
+              <Link href="/signup">Signup</Link>
+            </Grid>
+          </Grid.Container>
           <Component {...pageProps} />
         </NextUIProvider>
       </NextThemesProvider>
