@@ -1,28 +1,30 @@
-import { Card, Grid, Text, Button, Row } from "@nextui-org/react";
+import { Card, Grid, Text, Button, Row, Spacer } from "@nextui-org/react";
 
 export default function PriceSelection(props) {
   return (
-    <Card style={{ paddingLeft: 15 }} css={{ mw: "300px" }}>
-      <Card.Header>
+    <Card css={{ mw: "300px", paddingLeft: "15px" }}>
+      <Card.Body css={{ py: "$10", paddingLeft: "15px", paddingRight: "30px" }}>
         <Grid.Container>
           <Grid xs={12}>
-            <Text h2 b>
+            <Text h1 b>
               {props.plan}
             </Text>
           </Grid>
           <Grid xs={12}>
-            <Text>{props.price}</Text>
+            <Text h2>$4.99</Text>
+            <Text css={{ marginLeft: "5px", marginTop: "17px" }}>
+              / cover letter
+            </Text>
+            {/* <Text>{props.price}</Text> */}
           </Grid>
         </Grid.Container>
-      </Card.Header>
-      <Card.Body css={{ py: "$10" }}>
+        <Spacer y={1} />
         <Text>{props.description}</Text>
-      </Card.Body>
-      <Card.Footer>
+        <Spacer y={1.5} />
         <Button size="lg" color="secondary">
-          Purchase
+          Select
         </Button>
-      </Card.Footer>
+      </Card.Body>
     </Card>
   );
 }
