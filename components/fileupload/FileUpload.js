@@ -1,20 +1,9 @@
-import { Card, Text, Link } from "@nextui-org/react";
+import { useState } from "react";
+import { Card, Grid, Text, Link } from "@nextui-org/react";
+import { DeleteIcon } from "./DeleteIcon";
+import { IconButton } from "./IconButton";
 
 export default function FileUpload(props) {
-  const handleDrop = (event) => {
-    event.preventDefault();
-    const file =
-      event.dataTransfer !== undefined
-        ? event.dataTransfer.files[0]
-        : event.target.files[0];
-    const reader = new FileReader();
-    reader.onload = () => {
-      // reader.result contains the text of the file
-      console.log(reader.result);
-    };
-    reader.readAsText(file);
-  };
-
   return (
     <Card css={{ mw: "450px", height: "200px" }}>
       <Card.Body>
@@ -28,17 +17,15 @@ export default function FileUpload(props) {
             borderRadius: "10px",
             border: "1px dashed #ccc",
           }}
-          onDrop={handleDrop}
+          onDrop={props.handleDrop}
           onDragOver={(e) => e.preventDefault()}
         >
           <input
             type="file"
             id="file-input"
             //   ref={#}
-            onChange={handleDrop}
-            // accept=".txt/.pdf"
+            onChange={props.handleDrop}
             accept=".docx, .pdf, .txt"
-            // style={{ display: "none" }}
             style={{
               position: "absolute",
               width: "90%",
@@ -61,6 +48,22 @@ export default function FileUpload(props) {
               Browse
             </Link>
           </Text>
+          {props.fileName ? (
+            <Grid.Container style={{ marginLeft: "70px", marginTop: "100px" }}>
+              <Grid xs={5}>
+                <Text>{props.fileName}</Text>
+              </Grid>
+              <Grid xs={1}>
+                <IconButton>
+                  <DeleteIcon
+                    onClick={props.handleClick}
+                    size={20}
+                    fill="#FF0080"
+                  />
+                </IconButton>
+              </Grid>
+            </Grid.Container>
+          ) : null}
         </div>
       </Card.Body>
     </Card>
