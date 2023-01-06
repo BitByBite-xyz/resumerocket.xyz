@@ -1,4 +1,4 @@
-// 1. import `NextUIProvider` component
+import { useRouter } from "next/router";
 import {
   createTheme,
   NextUIProvider,
@@ -11,24 +11,18 @@ import { CustomNavBar } from "../components/navbar/CustomNavBar.js";
 import Head from "next/head";
 import Footer from "../components/footer/Footer.js";
 
-// 2. Call `createTheme` and pass your custom values
 const lightTheme = createTheme({
   type: "light",
-  /* theme: {
-     colors: { ...}, // optional
-   }*/
 });
 
 const darkTheme = createTheme({
   type: "dark",
-  /* theme: {
-     colors: { ...}, // optional
-   }*/
 });
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+
   return (
-    // 2. Use at the root of your app
     <>
       <NextThemesProvider
         defaultTheme="system"
@@ -41,13 +35,13 @@ function MyApp({ Component, pageProps }) {
         <NextUIProvider>
           <Grid.Container>
             <Grid xs={2}>
-              <Link href="/home">Home</Link>
+              <Link onClick={() => router.push("/home")}>Home</Link>
             </Grid>
             <Grid xs={2}>
-              <Link href="/pricing">Pricing</Link>
+              <Link onClick={() => router.push("/pricing")}>Pricing</Link>
             </Grid>
             <Grid xs={2}>
-              <Link href="/signup">Signup</Link>
+              <Link onClick={() => router.push("/signup")}>Signup</Link>
             </Grid>
           </Grid.Container>
           <div style={{ width: "90%", marginLeft: "3%" }}>
