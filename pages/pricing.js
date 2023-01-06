@@ -1,12 +1,12 @@
 import { Grid, Text, Spacer } from "@nextui-org/react";
 import { Box } from "../components/layout/Box.js";
 import PriceSelection from "../components/pricing/PriceSelection.js";
-import CustomNavBar from "../components/navbar/CustomNavBar.js";
 
 export default function Pricing() {
   return (
     <Box css={{ px: "$12", mt: "$8", "@xsMax": { px: "$10" } }}>
       <Text h1>Pricing</Text>
+      <Spacer y={2} />
       <Grid.Container>
         <Grid xs={4}>
           <PriceSelection

@@ -20,17 +20,24 @@ export default function Form(props) {
               {props.action}
             </Text>
           </Grid>
-          <Spacer y={2} />
+          <Spacer y={2.25} />
           <Grid xs={12}>
-            <Input size="lg" width="90%" placeholder="Email" />
+            <Input
+              bordered
+              labelPlaceholder="Email"
+              color="primary"
+              width="90%"
+              size="md"
+            />
           </Grid>
-          <Spacer y={1.5} />
+          <Spacer y={1.75} />
           <Grid xs={12}>
             <Input.Password
-              size="lg"
+              bordered
+              labelPlaceholder="Password"
+              color="primary"
               width="90%"
-              type="password"
-              placeHolder="Password"
+              size="md"
             />
           </Grid>
           <Spacer y={1} />

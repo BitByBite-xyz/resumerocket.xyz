@@ -9,11 +9,23 @@ export default function CLForm(props) {
       <Card.Body css={{ py: "$10" }}>
         <Grid.Container>
           <Grid xs={12}>
-            <Input size="lg" width="90%" placeholder="Company" />
+            <Input
+              bordered
+              placeholder="Company"
+              color="primary"
+              width="90%"
+              size="md"
+            />
           </Grid>
           <Spacer y={1.5} />
           <Grid xs={12}>
-            <Input size="lg" width="90%" placeHolder="Job Title" />
+            <Input
+              bordered
+              placeholder="Job Title"
+              color="primary"
+              width="90%"
+              size="md"
+            />
           </Grid>
           <Spacer y={1} />
           <Grid xs={12}>
