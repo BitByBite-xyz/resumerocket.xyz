@@ -8,9 +8,14 @@ import {
   Checkbox,
   Spacer,
 } from "@nextui-org/react";
+import { useRouter } from "next/router";
 import { GoogleIcon } from "../../assets/GoogleIcon.js";
 
 export default function Form(props) {
+  const router = useRouter();
+  const { pathname } = router;
+  const isLogin = pathname === "/login";
+
   return (
     <Card style={{ paddingLeft: 23 }} css={{ mw: "400px" }}>
       <Card.Body css={{ py: "$10" }}>
@@ -67,9 +72,15 @@ export default function Form(props) {
           </Grid>
           <Spacer y={1} />
           <Grid xs={12}>
-            <Text>
-              Don't have an account? <Link href="/signup">Sign up</Link>
-            </Text>
+            {isLogin ? (
+              <Text>
+                Don't have an account? <Link href="/signup">Sign up</Link>
+              </Text>
+            ) : (
+              <Text>
+                Already have an account? <Link href="/login">Login</Link>
+              </Text>
+            )}
           </Grid>
         </Grid.Container>
       </Card.Body>

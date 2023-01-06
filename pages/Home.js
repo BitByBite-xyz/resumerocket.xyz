@@ -10,8 +10,8 @@ export default function Home() {
   const [fileName, setFileName] = useState("");
 
   const handleDrop = (event) => {
-    event.preventDefault();
     let file;
+    event.preventDefault();
 
     if (event.dataTransfer.files[0] !== undefined) {
       file = event.dataTransfer.files[0];
@@ -19,9 +19,9 @@ export default function Home() {
       file = event.target.files[0];
     }
     setFileName(file.name);
+
     const reader = new FileReader();
     reader.onload = () => {
-      console.log("WE MADE IT HERE");
       setText(reader.result);
     };
     reader.readAsText(file);
@@ -32,6 +32,7 @@ export default function Home() {
     setFileName("");
     setText("");
   };
+
   return (
     <Box css={{ px: "$12", mt: "$8", "@xsMax": { px: "$10" } }}>
       <Text h1>Create Cover Letter</Text>
