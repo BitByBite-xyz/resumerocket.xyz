@@ -20,21 +20,23 @@ export default function FileUpload(props) {
           onDrop={props.handleDrop}
           onDragOver={(e) => e.preventDefault()}
         >
-          <input
-            type="file"
-            id="file-input"
-            //   ref={#}
-            onChange={props.handleDrop}
-            accept=".docx, .pdf, .txt"
-            style={{
-              position: "absolute",
-              width: "90%",
-              height: "78%",
-              marginLeft: "10px",
-              marginTop: "2px",
-              display: "none",
-            }}
-          />
+          <form ref={props.formRef}>
+            <input
+              type="file"
+              id="file-input"
+              //   ref={props.ref}
+              onChange={props.handleDrop}
+              accept=".docx, .pdf, .txt"
+              style={{
+                position: "absolute",
+                width: "90%",
+                height: "78%",
+                marginLeft: "10px",
+                marginTop: "2px",
+                display: "none",
+              }}
+            />
+          </form>
           <Text
             style={{
               position: "absolute",

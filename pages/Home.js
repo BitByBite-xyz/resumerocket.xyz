@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Box } from "../components/layout/Box.js";
 import { Grid, Text, Spacer } from "@nextui-org/react";
 import FileUpload from "../components/fileupload/FileUpload.js";
@@ -9,13 +9,15 @@ export default function Home() {
   const [text, setText] = useState("");
   const [fileName, setFileName] = useState("");
 
+  const fileInput = useRef(null);
+
   const handleDrop = (event) => {
     let file;
     event.preventDefault();
 
-    if (event.dataTransfer.files[0] !== undefined) {
+    if (event.dataTransfer !== undefined) {
       file = event.dataTransfer.files[0];
-    } else {
+    } else if (event.target !== undefined) {
       file = event.target.files[0];
     }
     setFileName(file.name);
@@ -29,6 +31,7 @@ export default function Home() {
 
   const handleClick = (event) => {
     event.preventDefault();
+    fileInput.current.reset();
     setFileName("");
     setText("");
   };
@@ -43,6 +46,7 @@ export default function Home() {
             fileName={fileName}
             handleDrop={handleDrop}
             handleClick={handleClick}
+            formRef={fileInput}
           />
         </Grid>
         <Grid xs={6}>{text ? <CoverLetter text={text} /> : null}</Grid>
