@@ -18,7 +18,7 @@ export default function Home() {
     } else {
       file = event.target.files[0];
     }
-
+    setFileName(file.name);
     const reader = new FileReader();
     reader.onload = () => {
       console.log("WE MADE IT HERE");
@@ -29,8 +29,8 @@ export default function Home() {
 
   const handleClick = (event) => {
     event.preventDefault();
-    console.log("clicked!!");
     setFileName("");
+    setText("");
   };
   return (
     <Box css={{ px: "$12", mt: "$8", "@xsMax": { px: "$10" } }}>
