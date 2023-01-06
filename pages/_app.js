@@ -50,7 +50,9 @@ function MyApp({ Component, pageProps }) {
               <Link href="/signup">Signup</Link>
             </Grid>
           </Grid.Container>
-          <Component {...pageProps} />
+          <div style={{ width: "90%", marginLeft: "3%" }}>
+            <Component {...pageProps} />
+          </div>
           <Spacer y={3} />
           <Footer />
         </NextUIProvider>

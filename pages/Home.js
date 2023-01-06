@@ -11,6 +11,7 @@ export default function Home() {
       <FileUpload />
       <Spacer y={1.5} />
       <CLForm />
+      <Spacer y={1.5} />
       <Text size="$lg">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Purus gravida quis
