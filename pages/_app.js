@@ -3,13 +3,13 @@ import {
   createTheme,
   NextUIProvider,
   Link,
-  StyledGridContainer,
+  Spacer,
   Grid,
 } from "@nextui-org/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { CustomNavBar } from "../components/navbar/CustomNavBar.js";
 import Head from "next/head";
-import Script from "next/script";
+import Footer from "../components/footer/Footer.js";
 
 // 2. Call `createTheme` and pass your custom values
 const lightTheme = createTheme({
@@ -51,6 +51,8 @@ function MyApp({ Component, pageProps }) {
             </Grid>
           </Grid.Container>
           <Component {...pageProps} />
+          <Spacer y={3} />
+          <Footer />
         </NextUIProvider>
       </NextThemesProvider>
 

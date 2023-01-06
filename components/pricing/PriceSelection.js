@@ -1,4 +1,4 @@
-import { Card, Grid, Text, Button, Row, Spacer } from "@nextui-org/react";
+import { Card, Grid, Text, Button, Spacer } from "@nextui-org/react";
 
 export default function PriceSelection(props) {
   return (

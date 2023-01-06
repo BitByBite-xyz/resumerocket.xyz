@@ -1,13 +1,4 @@
-import {
-  Link,
-  Card,
-  Input,
-  Grid,
-  Text,
-  Button,
-  Checkbox,
-  Spacer,
-} from "@nextui-org/react";
+import { Card, Input, Grid, Button, Spacer } from "@nextui-org/react";
 
 export default function CLForm(props) {
   return (
