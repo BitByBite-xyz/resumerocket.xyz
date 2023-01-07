@@ -74,11 +74,13 @@ export default function Form(props) {
           <Grid xs={12}>
             {isLogin ? (
               <Text>
-                Don&apos;t have an account? <Link href="/signup">Sign up</Link>
+                Don&apos;t have an account?{" "}
+                <Link onClick={() => router.push("/signup")}>Sign up</Link>
               </Text>
             ) : (
               <Text>
-                Already have an account? <Link href="/login">Login</Link>
+                Already have an account?{" "}
+                <Link onClick={() => router.push("/login")}>Login</Link>
               </Text>
             )}
           </Grid>
