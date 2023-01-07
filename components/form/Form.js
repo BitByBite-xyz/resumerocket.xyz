@@ -74,7 +74,7 @@ export default function Form(props) {
           <Grid xs={12}>
             {isLogin ? (
               <Text>
-                Don't have an account? <Link href="/signup">Sign up</Link>
+                Don&apos;t have an account? <Link href="/signup">Sign up</Link>
               </Text>
             ) : (
               <Text>
