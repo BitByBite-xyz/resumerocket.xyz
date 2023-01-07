@@ -15,7 +15,6 @@ export default function PriceSelection(props) {
             <Text css={{ marginLeft: "5px", marginTop: "17px" }}>
               / {props.amount}
             </Text>
-            {/* <Text>{props.price}</Text> */}
           </Grid>
         </Grid.Container>
         <Spacer y={1} />

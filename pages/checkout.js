@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Box } from "../components/layout/Box.js";
 import { Spacer } from "@nextui-org/react";
 import CheckoutForm from "../components/form/CheckoutForm";
