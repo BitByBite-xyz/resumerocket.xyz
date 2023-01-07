@@ -1,8 +1,10 @@
+import { useRouter } from "next/router";
 import { Grid, Text, Spacer } from "@nextui-org/react";
 import { Box } from "../components/layout/Box.js";
 import PriceSelection from "../components/pricing/PriceSelection.js";
 
 export default function Pricing() {
+  const router = useRouter();
   return (
     <Box css={{ px: "$12", mt: "$8", "@xsMax": { px: "$10" } }}>
       <Text h1>Pricing</Text>
@@ -14,6 +16,7 @@ export default function Pricing() {
             price="$4.99"
             amount="cover letter"
             description="A fixed price for each custom-tailored cover letters generated at the power of a few clicks."
+            onSelect={() => router.push("/checkout?plan=basic")}
           />
         </Grid>
         <Grid xs={4}>
@@ -22,6 +25,7 @@ export default function Pricing() {
             price="$29.99"
             amount="month"
             description="Unlimited custom-tailored cover letter generated at the power of a few clicks."
+            onSelect={() => router.push("/checkout?plan=premium")}
           />
         </Grid>
       </Grid.Container>
