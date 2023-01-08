@@ -26,7 +26,7 @@ export default function Footer() {
         <Grid.Container>
           <Grid xs={4}>
             <Text b>
-              &#169; <Link href={"https://bitbybite.xyz/"}>BitByBit</Link> 2023
+              &#169; <Link href={"https://bitbybite.xyz/"}>BitByBite</Link> 2023
             </Text>
           </Grid>
           <Grid xs={4}>

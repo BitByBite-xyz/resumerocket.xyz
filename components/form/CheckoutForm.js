@@ -1,4 +1,6 @@
 import { Card, Input, Grid, Text, Button } from "@nextui-org/react";
+import CreditCard from "../input/CreditCard";
+import ExpirationDate from "../input/ExpirationDate";
 
 export default function CheckoutForm(props) {
   return (
@@ -26,27 +28,26 @@ export default function CheckoutForm(props) {
             />
           </Grid>
           <Grid xs={12}>
-            <Input
+            <CreditCard
               bordered
               label="Credit Card Number"
-              placeholder="XXXX - XXXX - XXXX - XXXX"
+              placeholder="XXXX-XXXX-XXXX-XXXX"
               color="primary"
               width="100%"
               size="md"
               pattern="\d*"
-              maxlength="16"
+              maxlength="19"
             />
           </Grid>
           <Grid xs={6}>
-            <Input
+            <ExpirationDate
               bordered
               label="Expiration Date"
               placeholder="mm / yy"
               color="primary"
               size="md"
               width="95%"
-              pattern="\d*"
-              maxlength="16"
+              maxlength="7"
             />
           </Grid>
           <Grid xs={6}>
@@ -58,7 +59,12 @@ export default function CheckoutForm(props) {
               size="md"
               width="100%"
               pattern="\d*"
-              maxlength="16"
+              maxlength="3"
+              onKeyPress={(event) => {
+                if (!/[0-9]/.test(event.key)) {
+                  event.preventDefault();
+                }
+              }}
             />
           </Grid>
           <Grid xs={10}>
