@@ -14,10 +14,8 @@ export default function Footer() {
       />
       <div
         style={{
-          // backgroundColor: isDark ? "#162133" : "white",
           width: "100%",
           height: "150px",
-          // paddingLeft: "25px",
           display: "flex",
           alignItems: "center",
           paddingLeft: "12%",
