@@ -47,6 +47,7 @@ function MyApp({ Component, pageProps }) {
           <div style={{ width: "90%", marginLeft: "3%", minHeight: "100vh" }}>
             <Component {...pageProps} />
           </div>
+          <Spacer y={2} />
           <Footer />
         </NextUIProvider>
       </NextThemesProvider>

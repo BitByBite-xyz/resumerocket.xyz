@@ -129,15 +129,16 @@ export default function Home() {
           </Grid>
           <Grid xs={12}>
             <Text>
-              ResumeRocket is the perfect solution to quickly create a winning
-              cover letter that will help you stand out and land your dream job.
-              With one simple click, ResumeRocket will generate a personalized
-              and professional cover letter that is tailored to your unique job
-              requirements. Easily customize the cover letter to your needs and
-              stand out in the job market. ResumeRocket takes the hassle out of
-              crafting a professional cover letter and ensures that you make the
-              best possible impression with potential employers. Start building
-              your dream career with ResumeRocket today
+              <b style={{ fontSize: 25, marginRight: 5 }}>ResumeRocket</b> is
+              the perfect solution to quickly create a winning cover letter that
+              will help you stand out and land your dream job. With one simple
+              click, ResumeRocket will generate a personalized and professional
+              cover letter that is tailored to your unique job requirements.
+              Easily customize the cover letter to your needs and stand out in
+              the job market. ResumeRocket takes the hassle out of crafting a
+              professional cover letter and ensures that you make the best
+              possible impression with potential employers. Start building your
+              dream career with ResumeRocket today
             </Text>
           </Grid>
           <Grid xs={12}>
