@@ -1,8 +1,14 @@
+import { useState } from "react";
 import { Card, Input, Grid, Text, Button } from "@nextui-org/react";
 import CreditCard from "../input/CreditCard";
 import ExpirationDate from "../input/ExpirationDate";
 
 export default function CheckoutForm(props) {
+  const [cardNumber, setCardNumber] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
   return (
     <Card
       css={{
@@ -101,7 +107,7 @@ export default function CheckoutForm(props) {
             </div>
           </Grid>
           <Grid xs={12}>
-            <Button size="lg" css={{ width: "100%" }}>
+            <Button onClick={handleSubmit} size="lg" css={{ width: "100%" }}>
               Make Payment
             </Button>
           </Grid>
