@@ -44,10 +44,9 @@ function MyApp({ Component, pageProps }) {
               <Link onClick={() => router.push("/signup")}>Signup</Link>
             </Grid>
           </Grid.Container>
-          <div style={{ width: "90%", marginLeft: "3%" }}>
+          <div style={{ width: "90%", marginLeft: "3%", minHeight: "100vh" }}>
             <Component {...pageProps} />
           </div>
-          <Spacer y={3} />
           <Footer />
         </NextUIProvider>
       </NextThemesProvider>
