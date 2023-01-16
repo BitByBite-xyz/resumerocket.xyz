@@ -17,32 +17,34 @@ export default function TOS() {
           <Grid xs={12}>
             <Text>
               These Terms of Use constitute a legally binding agreement made
-              between you, whether personally or on behalf of an entity ("you")
-              and BitByBite LLC, doing business as ResumeRocket ("ResumeRocket,"
-              "we," "us," or "our"), concerning your access to and use of the
-              resumerocket.xyz website as well as any other media form, media
-              channel, mobile website or mobile application related, linked, or
-              otherwise connected thereto (collectively, the "Site"). We are
-              registered in Illinois, United States and have our registered
-              office at 1231 Green Bay Rd, Wilmette, IL 60091. You agree that by
-              accessing the Site, you have read, understood, and agreed to be
-              bound by all of these Terms of Use. IF YOU DO NOT AGREE WITH ALL
-              OF THESE TERMS OF USE, THEN YOU ARE EXPRESSLY PROHIBITED FROM
-              USING THE SITE AND YOU MUST DISCONTINUE USE IMMEDIATELY.
+              between you, whether personally or on behalf of an entity (
+              <q>you</q>) and BitByBite LLC, doing business as ResumeRocket (
+              <q>ResumeRocket,</q> <q>we,</q> <q>us,</q> or <q>our</q>),
+              concerning your access to and use of the resumerocket.xyz website
+              as well as any other media form, media channel, mobile website or
+              mobile application related, linked, or otherwise connected thereto
+              (collectively, the <q>Site</q>). We are registered in Illinois,
+              United States and have our registered office at 1231 Green Bay Rd,
+              Wilmette, IL 60091. You agree that by accessing the Site, you have
+              read, understood, and agreed to be bound by all of these Terms of
+              Use. IF YOU DO NOT AGREE WITH ALL OF THESE TERMS OF USE, THEN YOU
+              ARE EXPRESSLY PROHIBITED FROM USING THE SITE AND YOU MUST
+              DISCONTINUE USE IMMEDIATELY.
               <br />
               <br />
               Supplemental terms and conditions or documents that may be posted
               on the Site from time to time are hereby expressly incorporated
               herein by reference. We reserve the right, in our sole discretion,
               to make changes or modifications to these Terms of Use from time
-              to time. We will alert you about any changes by updating the "Last
-              updated" date of these Terms of Use, and you waive any right to
-              receive specific notice of each such change. Please ensure that
-              you check the applicable Terms every time you use our Site so that
-              you understand which Terms apply. You will be subject to, and will
-              be deemed to have been made aware of and to have accepted, the
-              changes in any revised Terms of Use by your continued use of the
-              Site after the date such revised Terms of Use are posted.
+              to time. We will alert you about any changes by updating the{" "}
+              <q>Last updated</q> date of these Terms of Use, and you waive any
+              right to receive specific notice of each such change. Please
+              ensure that you check the applicable Terms every time you use our
+              Site so that you understand which Terms apply. You will be subject
+              to, and will be deemed to have been made aware of and to have
+              accepted, the changes in any revised Terms of Use by your
+              continued use of the Site after the date such revised Terms of Use
+              are posted.
               <br />
               <br />
               The information provided on the Site is not intended for
@@ -80,15 +82,15 @@ export default function TOS() {
               Unless otherwise indicated, the Site is our proprietary property
               and all source code, databases, functionality, software, website
               designs, audio, video, text, photographs, and graphics on the Site
-              (collectively, the "Content") and the trademarks, service marks,
-              and logos contained therein (the "Marks") are owned or controlled
-              by us or licensed to us, and are protected by copyright and
-              trademark laws and various other intellectual property rights and
-              unfair competition laws of the United States, international
+              (collectively, the <q>Content</q>) and the trademarks, service
+              marks, and logos contained therein (the <q>Marks</q>) are owned or
+              controlled by us or licensed to us, and are protected by copyright
+              and trademark laws and various other intellectual property rights
+              and unfair competition laws of the United States, international
               copyright laws, and international conventions. The Content and the
-              Marks are provided on the Site "AS IS" for your information and
-              personal use only. Except as expressly provided in these Terms of
-              Use, no part of the Site and no Content or Marks may be copied,
+              Marks are provided on the Site <q>AS IS</q> for your information
+              and personal use only. Except as expressly provided in these Terms
+              of Use, no part of the Site and no Content or Marks may be copied,
               reproduced, aggregated, republished, uploaded, posted, publicly
               displayed, encoded, translated, transmitted, distributed, sold,
               licensed, or otherwise exploited for any commercial purpose
@@ -222,10 +224,11 @@ export default function TOS() {
                   - Upload or transmit (or attempt to upload or to transmit) any
                   material that acts as a passive or active information
                   collection or transmission mechanism, including without
-                  limitation, clear graphics interchange formats ("gifs"), 1×1
-                  pixels, web bugs, cookies, or other similar devices (sometimes
-                  referred to as "spyware" or "passive collection mechanisms" or
-                  "pcms").
+                  limitation, clear graphics interchange formats (<q>gifs</q>),
+                  1×1 pixels, web bugs, cookies, or other similar devices
+                  (sometimes referred to as <q>spyware</q> or{" "}
+                  <q>passive collection mechanisms</q> or
+                  <q>pcms</q>).
                 </li>
                 <li>
                   - Interfere with, disrupt, or create an undue burden on the
@@ -292,11 +295,12 @@ export default function TOS() {
               materials to us or on the Site, including but not limited to text,
               writings, video, audio, photographs, graphics, comments,
               suggestions, or personal information or other material
-              (collectively, "Contributions"). Contributions may be viewable by
-              other users of the Site and through third-party websites. As such,
-              any Contributions you transmit may be treated in accordance with
-              the Site Privacy Policy. When you create or make available any
-              Contributions, you thereby represent and warrant that:
+              (collectively, <q>Contributions</q>). Contributions may be
+              viewable by other users of the Site and through third-party
+              websites. As such, any Contributions you transmit may be treated
+              in accordance with the Site Privacy Policy. When you create or
+              make available any Contributions, you thereby represent and
+              warrant that:
               <br />
               <ul>
                 <li>
@@ -407,16 +411,16 @@ export default function TOS() {
             <Text>
               You acknowledge and agree that any questions, comments,
               suggestions, ideas, feedback, or other information regarding the
-              Site ("Submissions") provided by you to us are non-confidential
-              and shall become our sole property. We shall own exclusive rights,
-              including all intellectual property rights, and shall be entitled
-              to the unrestricted use and dissemination of these Submissions for
-              any lawful purpose, commercial or otherwise, without
-              acknowledgment or compensation to you. You hereby waive all moral
-              rights to any such Submissions, and you hereby warrant that any
-              such Submissions are original with you or that you have the right
-              to submit such Submissions. You agree there shall be no recourse
-              against us for any alleged or actual infringement or
+              Site (<q>Submissions</q>) provided by you to us are
+              non-confidential and shall become our sole property. We shall own
+              exclusive rights, including all intellectual property rights, and
+              shall be entitled to the unrestricted use and dissemination of
+              these Submissions for any lawful purpose, commercial or otherwise,
+              without acknowledgment or compensation to you. You hereby waive
+              all moral rights to any such Submissions, and you hereby warrant
+              that any such Submissions are original with you or that you have
+              the right to submit such Submissions. You agree there shall be no
+              recourse against us for any alleged or actual infringement or
               misappropriation of any proprietary right in your Submissions.
             </Text>
           </Grid>
@@ -540,13 +544,13 @@ export default function TOS() {
               <br />
               To expedite resolution and control the cost of any dispute,
               controversy, or claim related to these Terms of Use (each
-              "Dispute" and collectively, the "Disputes") brought by either you
-              or us (individually, a "Party" and collectively, the "Parties"),
-              the Parties agree to first attempt to negotiate any Dispute
-              (except those Disputes expressly provided below) informally for at
-              least thirty (30) days before initiating arbitration. Such
-              informal negotiations commence upon written notice from one Party
-              to the other Party.
+              <q>Dispute</q> and collectively, the <q>Disputes</q>) brought by
+              either you or us (individually, a <q>Party</q> and collectively,
+              the <q>Parties</q>), the Parties agree to first attempt to
+              negotiate any Dispute (except those Disputes expressly provided
+              below) informally for at least thirty (30) days before initiating
+              arbitration. Such informal negotiations commence upon written
+              notice from one Party to the other Party.
               <br />
               <br />
               <b>Binding Arbitration</b>
@@ -558,14 +562,14 @@ export default function TOS() {
               YOU WOULD HAVE THE RIGHT TO SUE IN COURT AND HAVE A JURY TRIAL.
               The arbitration shall be commenced and conducted under the
               Commercial Arbitration Rules of the American Arbitration
-              Association ("AAA") and, where appropriate, the AAA&apos;s
-              Supplementary Procedures for Consumer Related Disputes ("AAA
-              Consumer Rules"), both of which are available at the AAA website:
-              www.adr.org. Your arbitration fees and your share of arbitrator
-              compensation shall be governed by the AAA Consumer Rules and,
-              where appropriate, limited by the AAA Consumer Rules. The
-              arbitration may be conducted in person, through the submission of
-              documents, by phone, or online. The arbitrator will make a
+              Association (<q>AAA</q>) and, where appropriate, the AAA&apos;s
+              Supplementary Procedures for Consumer Related Disputes (
+              <q>AAA Consumer Rules</q>), both of which are available at the AAA
+              website: www.adr.org. Your arbitration fees and your share of
+              arbitrator compensation shall be governed by the AAA Consumer
+              Rules and, where appropriate, limited by the AAA Consumer Rules.
+              The arbitration may be conducted in person, through the submission
+              of documents, by phone, or online. The arbitrator will make a
               decision in writing, but need not provide a statement of reasons
               unless requested by either Party. The arbitrator must follow
               applicable law, and any award may be challenged if the arbitrator
