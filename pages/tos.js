@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function TOS() {
   const router = useRouter();
   return (
     <>
@@ -199,7 +199,7 @@ export default function Home() {
                   - Upload or transmit (or attempt to upload or to transmit)
                   viruses, Trojan horses, or other material, including excessive
                   use of capital letters and spamming (continuous posting of
-                  repetitive text), that interferes with any party's
+                  repetitive text), that interferes with any party&apos;s
                   uninterrupted use and enjoyment of the Site or modifies,
                   impairs, disrupts, alters, or interferes with the use.
                   features, functions, operation, or maintenance of the Site.
@@ -241,8 +241,8 @@ export default function Home() {
                   Site.
                 </li>
                 <li>
-                  - Copy or adapt the Site's software, including but not limited
-                  to Flash, PHP, HTML, JavaScript, or other code.
+                  - Copy or adapt the Site&apos;s software, including but not
+                  limited to Flash, PHP, HTML, JavaScript, or other code.
                 </li>
                 <li>
                   - Except as permitted by applicable law, decipher, decompile,
@@ -558,7 +558,7 @@ export default function Home() {
               YOU WOULD HAVE THE RIGHT TO SUE IN COURT AND HAVE A JURY TRIAL.
               The arbitration shall be commenced and conducted under the
               Commercial Arbitration Rules of the American Arbitration
-              Association ("AAA") and, where appropriate, the AAA's
+              Association ("AAA") and, where appropriate, the AAA&apos;s
               Supplementary Procedures for Consumer Related Disputes ("AAA
               Consumer Rules"), both of which are available at the AAA website:
               www.adr.org. Your arbitration fees and your share of arbitrator
@@ -655,9 +655,9 @@ export default function Home() {
               YOUR USE THEREOF, INCLUDING WITHOUT LIMITATION, THE IMPLIED
               WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
               AND NON-INFRINGEMENT. WE MAKE NO WARRANTIES OR REPRESENTATIONS
-              ABOUT THE ACCURACY OR COMPLETENESS OF THE SITE'S CONTENT OR THE
-              CONTENT OF ANY WEBSITES LINKED TO THE SITE AND WE WILL ASSUME NO
-              LIABILITY OR RESPONSIBILITY FOR ANY (1) ERRORS, MISTAKES, OR
+              ABOUT THE ACCURACY OR COMPLETENESS OF THE SITE&apos;S CONTENT OR
+              THE CONTENT OF ANY WEBSITES LINKED TO THE SITE AND WE WILL ASSUME
+              NO LIABILITY OR RESPONSIBILITY FOR ANY (1) ERRORS, MISTAKES, OR
               INACCURACIES OF CONTENT AND MATERIALS, (2) PERSONAL INJURY OR
               PROPERTY DAMAGE, OF ANY NATURE WHATSOEVER, RESULTING FROM YOUR
               ACCESS TO AND USE OF THE SITE, (3) ANY UNAUTHORIZED ACCESS TO OR
@@ -719,9 +719,9 @@ export default function Home() {
               our subsidiaries, affiliates, and all of our respective officers,
               agents, partners, and employees, from and against any loss,
               damage, liability, claim, or demand, including reasonable
-              attorneys' fees and expenses, made by any third party due to or
-              arising out of: (1) use of the Site; (2) breach of these Terms of
-              Use; (3) any breach of your representations and warranties set
+              attorneys&apos; fees and expenses, made by any third party due to
+              or arising out of: (1) use of the Site; (2) breach of these Terms
+              of Use; (3) any breach of your representations and warranties set
               forth in these Terms of Use; (4) your violation of the rights of a
               third party, including but not limited to intellectual property
               rights; or (5) any overt harmful act toward any other user of the

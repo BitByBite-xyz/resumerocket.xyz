@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function Index() {
   const router = useRouter();
   return (
     <>
