@@ -1,7 +1,10 @@
 import { Grid, Link, Text, useTheme } from "@nextui-org/react";
+import { useRouter } from "next/router";
 
 export default function Footer() {
+  const router = useRouter();
   const { isDark } = useTheme();
+
   return (
     <>
       <div
@@ -28,7 +31,9 @@ export default function Footer() {
             </Text>
           </Grid>
           <Grid xs={4}>
-            <Text b>Terms of use</Text>
+            <Link onClick={() => router.push("/tos")}>
+              <Text b>Terms of Service</Text>
+            </Link>
           </Grid>
           <Grid xs={4}>
             <Text b>Contact us</Text>
