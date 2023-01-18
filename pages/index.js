@@ -5,7 +5,6 @@ import { Text, Grid, Button, Spacer, Card,Navbar } from "@nextui-org/react";
 import { useRouter } from "next/router";
 // import CoverLetter from "../components/coverletter/CoverLetter";
 import Header from '../components/navbar';
-import { Layout } from "../components/header/Layout";
 
 //const inter = Inter({ subsets: ["latin"] });
 export const AcmeLogo = () => (

@@ -62,7 +62,16 @@ export default function CustomNavBar() {
           isActive={pathname === '/pricing'}
           key="pricing"
         >Pricing</Navbar.Link>
-        <Navbar.Link key="examples">Examples</Navbar.Link>
+        <Navbar.Link 
+          key="examples"
+          isActive={pathname === '/login'}
+          onClick={()=> {
+            router.push('/login');
+
+          }}
+          >
+            Examples
+        </Navbar.Link>
       </Navbar.Content>
       <Navbar.Content>
         <Navbar.Link color="inherit" href="#">

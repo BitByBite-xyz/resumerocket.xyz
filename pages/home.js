@@ -4,6 +4,7 @@ import { Grid, Text, Spacer } from "@nextui-org/react";
 import FileUpload from "../components/fileupload/FileUpload.js";
 import CLForm from "../components/form/CLForm.js";
 import CoverLetter from "../components/coverletter/CoverLetter.js";
+import Header from '../components/navbar';
 
 export default function Home() {
   const [text, setText] = useState("");
@@ -37,6 +38,9 @@ export default function Home() {
   };
 
   return (
+    <>
+    <Header/>
+ 
     <Box css={{ px: "$12", mt: "$8", "@xsMax": { px: "$10" } }}>
       <Text h1>Create Cover Letter</Text>
       <Spacer y={1.5} />
@@ -56,5 +60,6 @@ export default function Home() {
       </Grid.Container>
       {!text ? <Spacer y={20} /> : null}{" "}
     </Box>
+    </>
   );
 }
