@@ -1,6 +1,8 @@
-import { Card, Input, Grid, Button, Spacer } from "@nextui-org/react";
+import { useState } from "react";
+import { Card, Input, Grid, Button, Spacer, Loading } from "@nextui-org/react";
 
 export default function CLForm(props) {
+  const [loading, setLoading] = useState(false);
   return (
     <Card
       style={{ paddingLeft: 23, paddingTop: 15, paddingBottom: 15 }}
@@ -29,8 +31,16 @@ export default function CLForm(props) {
           </Grid>
           <Spacer y={1} />
           <Grid xs={12}>
-            <Button size="lg" css={{ width: "90%" }}>
-              Generate Cover Letter
+            <Button
+              onClick={() => setLoading(!loading)}
+              size="lg"
+              css={{ width: "90%" }}
+            >
+              {loading ? (
+                <Loading color="currentColor" size="sm" />
+              ) : (
+                <>Generate Cover Letter</>
+              )}
             </Button>
           </Grid>
         </Grid.Container>

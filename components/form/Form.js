@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Link,
   Card,
@@ -7,6 +8,7 @@ import {
   Button,
   Checkbox,
   Spacer,
+  Loading,
 } from "@nextui-org/react";
 import { useRouter } from "next/router";
 import { GoogleIcon } from "../../assets/GoogleIcon.js";
@@ -15,6 +17,8 @@ export default function Form(props) {
   const router = useRouter();
   const { pathname } = router;
   const isLogin = pathname === "/login";
+
+  const [loading, setLoading] = useState(false);
 
   return (
     <Card style={{ paddingLeft: 23 }} css={{ mw: "400px" }}>
@@ -53,8 +57,16 @@ export default function Form(props) {
           </Grid>
           <Spacer y={1} />
           <Grid xs={12}>
-            <Button size="lg" css={{ width: "90%" }}>
-              {props.action}
+            <Button
+              onClick={() => setLoading(!loading)}
+              size="lg"
+              css={{ width: "90%" }}
+            >
+              {loading ? (
+                <Loading color="currentColor" size="sm" />
+              ) : (
+                <>{props.action}</>
+              )}
             </Button>
           </Grid>
           <Spacer y={0.75} />
