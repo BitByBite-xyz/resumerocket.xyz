@@ -1,11 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { Navbar, Button, Link, Text } from "@nextui-org/react";
+import { useState } from "react";
+import {
+  Avatar,
+  Button,
+  Navbar,
+  Dropdown,
+  Link,
+  Text,
+} from "@nextui-org/react";
 import { AcmeLogo } from "./Logo.js";
 import { useRouter } from "next/router";
 
 export default function CustomNavBar() {
   const router = useRouter();
   const { pathname } = router;
+
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
   return (
     <Navbar isCompact isBordered variant="sticky">
@@ -44,16 +53,62 @@ export default function CustomNavBar() {
           Examples
         </Navbar.Link>
       </Navbar.Content>
-      <Navbar.Content>
-        <Navbar.Link color="inherit" onClick={() => router.push("/login")}>
-          Login
-        </Navbar.Link>
-        <Navbar.Item>
-          <Button auto flat as={Link} onClick={() => router.push("/signup")}>
-            Sign Up
-          </Button>
-        </Navbar.Item>
-      </Navbar.Content>
+
+      {!isLoggedIn ? (
+        <Navbar.Content>
+          <Navbar.Link color="inherit" onClick={() => setLoggedIn(true)}>
+            Login
+          </Navbar.Link>
+          <Navbar.Item>
+            <Button auto flat as={Link} onClick={() => router.push("/signup")}>
+              Sign Up
+            </Button>
+          </Navbar.Item>
+        </Navbar.Content>
+      ) : (
+        <Navbar.Content
+          css={{
+            "@xs": {
+              w: "12%",
+              jc: "flex-end",
+            },
+          }}
+        >
+          <Dropdown placement="bottom-right">
+            <Navbar.Item>
+              <Dropdown.Trigger>
+                <Avatar color="primary" text="J" textColor="white" />
+              </Dropdown.Trigger>
+            </Navbar.Item>
+            <Dropdown.Menu
+              aria-label="User menu actions"
+              color="primary"
+              onAction={(actionKey) => console.log({ actionKey })}
+            >
+              <Dropdown.Item key="profile" css={{ height: "$18" }}>
+                <Text b color="inherit" css={{ d: "flex" }}>
+                  Signed in as
+                </Text>
+                <Text b color="inherit" css={{ d: "flex" }}>
+                  jacob@bitbybite.xyz
+                </Text>
+              </Dropdown.Item>
+              <Dropdown.Item key="analytics" withDivider>
+                Account
+              </Dropdown.Item>
+              <Dropdown.Item key="system">Cover Letters</Dropdown.Item>
+              <Dropdown.Item key="configurations">Settings</Dropdown.Item>
+              <Dropdown.Item key="help_and_feedback" withDivider>
+                Help & Feedback
+              </Dropdown.Item>
+              <Dropdown.Item key="logout" withDivider color="error">
+                Log Out
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Navbar.Content>
+      )}
+
       <Navbar.Collapse>
         <Navbar.CollapseItem isActive={pathname === "/home"}>
           <Link
