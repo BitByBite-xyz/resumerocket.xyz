@@ -54,14 +54,8 @@ export default function CustomNavBar() {
           </Button>
         </Navbar.Item>
       </Navbar.Content>
-      <Navbar.Collapse disableAnimation>
-        <Navbar.CollapseItem
-          activeColor="warning"
-          // css={{
-          //   color: index === collapseItems.length - 1 ? "$error" : "",
-          // }}
-          // isActive={index === 2}
-        >
+      <Navbar.Collapse>
+        <Navbar.CollapseItem isActive={pathname === "/home"}>
           <Link
             color="inherit"
             css={{
@@ -72,7 +66,7 @@ export default function CustomNavBar() {
             Create a Cover Letter
           </Link>
         </Navbar.CollapseItem>
-        <Navbar.CollapseItem activeColor="warning">
+        <Navbar.CollapseItem isActive={pathname === "/pricing"}>
           <Link
             color="inherit"
             css={{
@@ -83,7 +77,7 @@ export default function CustomNavBar() {
             Pricing
           </Link>
         </Navbar.CollapseItem>
-        <Navbar.CollapseItem activeColor="warning">
+        <Navbar.CollapseItem>
           <Link
             color="inherit"
             css={{
