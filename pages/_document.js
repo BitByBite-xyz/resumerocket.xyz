@@ -17,14 +17,14 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           {CssBaseline.flush()}
-          <meta name="application-name" content="MusicBridge" />
+          <meta name="application-name" content="ResumeRocket" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta
             name="apple-mobile-web-app-status-bar-style"
             content="default"
           />
-          <meta name="apple-mobile-web-app-title" content="MusicBridge" />
-          <meta name="description" content="MusicBridge beta" />
+          <meta name="apple-mobile-web-app-title" content="ResumeRocket" />
+          <meta name="description" content="ResumeRocket beta" />
           <meta name="format-detection" content="telephone=no" />
           <meta name="mobile-web-app-capable" content="yes" />
           <meta
