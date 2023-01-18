@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { createTheme, NextUIProvider } from "@nextui-org/react";
 import Footer from "../components/footer/Footer.js";
 
