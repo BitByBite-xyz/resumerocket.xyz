@@ -1,8 +1,9 @@
-import { createTheme, NextUIProvider } from "@nextui-org/react";
+import { createTheme, NextUIProvider, Spacer } from "@nextui-org/react";
 import Footer from "../components/footer/Footer.js";
 import Header from "../components/navbar";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { Box } from "../components/layout/Box.js";
 
 // 2. Call `createTheme` and pass your custom values
 const lightTheme = createTheme({
@@ -44,9 +45,12 @@ function MyApp({ Component, pageProps }) {
         }}
       >
         <Header />
-        <div style={{ minHeight: "100vh" }}>
-          <Component {...pageProps} />
+        <div style={{ minHeight: "100vh", width: "90%", marginLeft: "3%" }}>
+          <Box css={{ px: "$12", mt: "$8", "@xsMax": { px: "$10" } }}>
+            <Component {...pageProps} />
+          </Box>
         </div>
+        <Spacer y={2} />
         <Footer />
       </NextUIProvider>
     </>

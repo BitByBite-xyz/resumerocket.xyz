@@ -21,7 +21,7 @@ export default function Form(props) {
   const [loading, setLoading] = useState(false);
 
   return (
-    <Card style={{ paddingLeft: 23 }} css={{ mw: "400px" }}>
+    <Card style={{ paddingLeft: 23, marginTop: "10%" }} css={{ mw: "400px" }}>
       <Card.Body css={{ py: "$10" }}>
         <Grid.Container>
           <Grid xs={12}>
