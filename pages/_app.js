@@ -1,6 +1,6 @@
 import { createTheme, NextUIProvider } from "@nextui-org/react";
 import Footer from "../components/footer/Footer.js";
-
+import Header from "../components/navbar";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
@@ -43,6 +43,7 @@ function MyApp({ Component, pageProps }) {
           dark: darkTheme.className,
         }}
       >
+        <Header />
         <div style={{ minHeight: "100vh" }}>
           <Component {...pageProps} />
         </div>

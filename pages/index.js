@@ -1,12 +1,7 @@
-//import Image from "next/image";
-//import { Inter } from "@next/font/google";
 import styles from "../styles/Home.module.css";
 import { Text, Grid, Button, Spacer, Card, Navbar } from "@nextui-org/react";
 import { useRouter } from "next/router";
-// import CoverLetter from "../components/coverletter/CoverLetter";
-import Header from "../components/navbar";
 
-//const inter = Inter({ subsets: ["latin"] });
 export const AcmeLogo = () => (
   <svg
     className=""
@@ -29,7 +24,6 @@ export default function Index() {
   const router = useRouter();
   return (
     <>
-      <Header />
       <main className={styles.main}>
         <Grid.Container gap={2}>
           <Grid xs={12}>

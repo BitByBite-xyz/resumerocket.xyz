@@ -2,13 +2,10 @@ import { useRouter } from "next/router";
 import { Grid, Text, Spacer } from "@nextui-org/react";
 import { Box } from "../components/layout/Box.js";
 import PriceSelection from "../components/pricing/PriceSelection.js";
-import Header from '../components/navbar';
 
 export default function Pricing() {
   const router = useRouter();
   return (
-<>  
-    <Header/>
     <Box css={{ px: "$12", mt: "$8", "@xsMax": { px: "$10" } }}>
       <Text h1>Pricing</Text>
       <Spacer y={2} />
@@ -42,6 +39,5 @@ export default function Pricing() {
         pellentesque massa placerat duis ultricies.
       </Text>
     </Box>
-    </>
   );
 }
