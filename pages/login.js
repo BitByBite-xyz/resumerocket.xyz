@@ -5,7 +5,7 @@ export default function Login() {
   return (
     <>
       <Grid.Container>
-        <Grid xs={4}>
+        <Grid md={4} xs={12}>
           <Form action="Login" />
         </Grid>
       </Grid.Container>

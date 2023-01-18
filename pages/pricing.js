@@ -8,8 +8,8 @@ export default function Pricing() {
     <>
       <Text h1>Pricing</Text>
       <Spacer y={2} />
-      <Grid.Container>
-        <Grid xs={4}>
+      <Grid.Container gap={2}>
+        <Grid md={4} xs={12}>
           <PriceSelection
             plan="Basic"
             price="$4.99"
@@ -18,7 +18,7 @@ export default function Pricing() {
             onSelect={() => router.push("/checkout?plan=basic")}
           />
         </Grid>
-        <Grid xs={4}>
+        <Grid md={4} xs={12}>
           <PriceSelection
             plan="Premium"
             price="$29.99"

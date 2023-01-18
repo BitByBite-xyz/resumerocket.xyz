@@ -5,7 +5,7 @@ export default function Pricing() {
   return (
     <>
       <Grid.Container>
-        <Grid xs={4}>
+        <Grid md={4} xs={12}>
           <Form action="Sign up" />
         </Grid>
       </Grid.Container>

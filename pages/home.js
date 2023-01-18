@@ -40,7 +40,7 @@ export default function Home() {
       <Text h1>Create Cover Letter</Text>
       <Spacer y={1.5} />
       <Grid.Container>
-        <Grid xs={5}>
+        <Grid md={5} xs={12}>
           <FileUpload
             fileName={fileName}
             handleDrop={handleDrop}
@@ -49,7 +49,7 @@ export default function Home() {
           />
         </Grid>
         <Grid xs={6}>{text ? <CoverLetter text={text} /> : null}</Grid>
-        <Grid style={{ position: "absolute", marginTop: 250 }} xs={6}>
+        <Grid style={{ position: "absolute", marginTop: 250 }} md={6} xs={9.5}>
           <CLForm />
         </Grid>
       </Grid.Container>
