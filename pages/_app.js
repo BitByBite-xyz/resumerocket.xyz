@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import { createTheme, NextUIProvider, Spacer } from "@nextui-org/react";
 import { useRouter } from "next/router";
 import { Box } from "../components/layout/Box.js";
-import { initializeApp, firebase } from "firebase/app";
-import { firebaseConfig } from "../config/firebaseConfig.js";
+import fbb from "../config/firebaseConfig.js";
 import Footer from "../components/footer/Footer.js";
 import Header from "../components/navbar";
 import Head from "next/head";
+import { getAuth } from "firebase/auth";
 
 // 2. Call `createTheme` and pass your custom values
 const lightTheme = createTheme({
@@ -21,7 +21,8 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
   useEffect(() => {
     // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(fbb);
+
   }, []);
 
   return (

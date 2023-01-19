@@ -7,14 +7,51 @@ import {
   Link,
   Text,
 } from "@nextui-org/react";
-import { AcmeLogo } from "./Logo.js";
 import { useRouter } from "next/router";
+
+import { AcmeLogo } from "./Logo.js";
+
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import fbapp from '../../config/firebaseConfig';
+
+
 
 export default function CustomNavBar() {
   const router = useRouter();
   const { pathname } = router;
 
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [user, setUser] = useState({
+    email: '',
+    uid: ''
+  })
+  const authh = getAuth(fbapp);
+  const auth = getAuth();
+  let uid;
+  let userData;
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      uid = user.uid;
+      console.log(user,'userr')
+      userData = {
+        email: user.email,
+        uid: user.uid,
+      }
+      if (user.email !== ''){
+        setUser(userData)
+
+      }
+
+      // ...
+    } else {
+      console.log('uid is none')
+
+      // User is signed out
+      // ...
+    }
+  });
+
 
   return (
     <Navbar isCompact isBordered variant="sticky">
@@ -54,9 +91,9 @@ export default function CustomNavBar() {
         </Navbar.Link>
       </Navbar.Content>
 
-      {!isLoggedIn ? (
+      {user.email === '' ? (
         <Navbar.Content>
-          <Navbar.Link color="inherit" onClick={() => setLoggedIn(true)}>
+          <Navbar.Link color="inherit" onClick={() => router.push("/login")}>
             Login
           </Navbar.Link>
           <Navbar.Item>
@@ -90,7 +127,7 @@ export default function CustomNavBar() {
                   Signed in as
                 </Text>
                 <Text b color="inherit" css={{ d: "flex" }}>
-                  jacob@bitbybite.xyz
+                  {user.email}
                 </Text>
               </Dropdown.Item>
               <Dropdown.Item key="analytics" withDivider>
