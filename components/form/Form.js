@@ -11,6 +11,13 @@ import {
   Loading,
 } from "@nextui-org/react";
 import { useRouter } from "next/router";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from "firebase/auth";
 import { GoogleIcon } from "../../assets/GoogleIcon.js";
 
 export default function Form(props) {
@@ -18,7 +25,71 @@ export default function Form(props) {
   const { pathname } = router;
   const isLogin = pathname === "/login";
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState(false);
+
   const [loading, setLoading] = useState(false);
+
+  const handleSubmit = (e) => {
+    const auth = getAuth();
+    if (props.action === "Login") {
+      // Login existing user
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          router.push("/home");
+          // ...
+        })
+        .catch((error) => {
+          console.log(error);
+          const errorCode = error.code;
+          const errorMessage = error.message;
+        });
+    } else {
+      // Sign up new user
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          router.push("/home");
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // ..
+        });
+    }
+  };
+
+  const loginWithGoogle = () => {
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        // Login successful -> route to /home
+        router.push("/home");
+        // ...
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
+  };
 
   return (
     <Card style={{ paddingLeft: 23, marginTop: "10%" }} css={{ mw: "400px" }}>
@@ -37,6 +108,7 @@ export default function Form(props) {
               color="primary"
               width="90%"
               size="md"
+              onChange={(e) => setEmail(e.target.value)}
             />
           </Grid>
           <Spacer y={1.75} />
@@ -47,21 +119,18 @@ export default function Form(props) {
               color="primary"
               width="90%"
               size="md"
+              onChange={(e) => setPassword(e.target.value)}
             />
           </Grid>
           <Spacer y={1} />
           <Grid xs={12}>
-            <Checkbox size="sm">
+            <Checkbox onClick={() => setRemember(!remember)} size="sm">
               <Text>Remember me</Text>
             </Checkbox>
           </Grid>
           <Spacer y={1} />
           <Grid xs={12}>
-            <Button
-              onClick={() => setLoading(!loading)}
-              size="lg"
-              css={{ width: "90%" }}
-            >
+            <Button onClick={handleSubmit} size="lg" css={{ width: "90%" }}>
               {loading ? (
                 <Loading color="currentColor" size="sm" />
               ) : (
@@ -78,6 +147,7 @@ export default function Form(props) {
               css={{ width: "90%" }}
               auto
               ghost
+              onClick={loginWithGoogle}
             >
               Sign in with Google
             </Button>

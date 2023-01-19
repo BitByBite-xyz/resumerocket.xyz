@@ -1,9 +1,12 @@
+import { useEffect } from "react";
 import { createTheme, NextUIProvider, Spacer } from "@nextui-org/react";
+import { useRouter } from "next/router";
+import { Box } from "../components/layout/Box.js";
+import { initializeApp, firebase } from "firebase/app";
+import { firebaseConfig } from "../config/firebaseConfig.js";
 import Footer from "../components/footer/Footer.js";
 import Header from "../components/navbar";
 import Head from "next/head";
-import { useRouter } from "next/router";
-import { Box } from "../components/layout/Box.js";
 
 // 2. Call `createTheme` and pass your custom values
 const lightTheme = createTheme({
@@ -16,18 +19,10 @@ const darkTheme = createTheme({
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
-  // useEffect(() => {
-  //   // function to get the current page url and pass it to gtag pageView() function
-  //   const handleRouteChange = (url) => {};
-
-  //   router.events.on("routeChangeComplete", handleRouteChange);
-  //   router.events.on("hashChangeComplete", handleRouteChange);
-
-  //   return () => {
-  //     router.events.off("routeChangeComplete", handleRouteChange);
-  //     router.events.off("hashChangeComplete", handleRouteChange);
-  //   };
-  // }, [router.events]);
+  useEffect(() => {
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+  }, []);
 
   return (
     <>
