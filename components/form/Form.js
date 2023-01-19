@@ -93,17 +93,9 @@ export default function Form(props) {
       });
   };
 
+  // If user is logged in, redirect to /home
   const authh = getAuth(fbapp);
-  const auth = getAuth();
-
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in
-      router.push("/home");
-    } else {
-      // User is signed out
-    }
-  });
+  onAuthStateChanged(getAuth(), (user) => (user ? router.push("/home") : null));
 
   return (
     <Card style={{ paddingLeft: 23, marginTop: "10%" }} css={{ mw: "400px" }}>
