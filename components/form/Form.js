@@ -17,7 +17,9 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
+  onAuthStateChanged,
 } from "firebase/auth";
+import fbapp from "../../config/firebaseConfig";
 import { GoogleIcon } from "../../assets/GoogleIcon.js";
 
 export default function Form(props) {
@@ -90,6 +92,18 @@ export default function Form(props) {
         // ...
       });
   };
+
+  const authh = getAuth(fbapp);
+  const auth = getAuth();
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in
+      router.push("/home");
+    } else {
+      // User is signed out
+    }
+  });
 
   return (
     <Card style={{ paddingLeft: 23, marginTop: "10%" }} css={{ mw: "400px" }}>

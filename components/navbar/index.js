@@ -11,47 +11,51 @@ import { useRouter } from "next/router";
 
 import { AcmeLogo } from "./Logo.js";
 
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import fbapp from '../../config/firebaseConfig';
-
-
+import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
+import fbapp from "../../config/firebaseConfig";
 
 export default function CustomNavBar() {
   const router = useRouter();
   const { pathname } = router;
 
   const [user, setUser] = useState({
-    email: '',
-    uid: ''
-  })
+    email: "",
+    uid: "",
+  });
+
   const authh = getAuth(fbapp);
   const auth = getAuth();
   let uid;
   let userData;
+
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
+      // User is signed in
       uid = user.uid;
-      console.log(user,'userr')
+      // console.log(user, "userr");
       userData = {
         email: user.email,
         uid: user.uid,
+      };
+      if (user.email !== "") {
+        setUser(userData);
       }
-      if (user.email !== ''){
-        setUser(userData)
-
-      }
-
-      // ...
     } else {
-      console.log('uid is none')
-
+      console.log("uid is none");
       // User is signed out
-      // ...
     }
   });
 
+  const signOut = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        console.log("signed out");
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
 
   return (
     <Navbar isCompact isBordered variant="sticky">
@@ -91,7 +95,7 @@ export default function CustomNavBar() {
         </Navbar.Link>
       </Navbar.Content>
 
-      {user.email === '' ? (
+      {user.email === "" ? (
         <Navbar.Content>
           <Navbar.Link color="inherit" onClick={() => router.push("/login")}>
             Login
@@ -138,7 +142,12 @@ export default function CustomNavBar() {
               <Dropdown.Item key="help_and_feedback" withDivider>
                 Help & Feedback
               </Dropdown.Item>
-              <Dropdown.Item key="logout" withDivider color="error">
+              <Dropdown.Item
+                onClick={signOut}
+                key="logout"
+                withDivider
+                color="error"
+              >
                 Log Out
               </Dropdown.Item>
             </Dropdown.Menu>
