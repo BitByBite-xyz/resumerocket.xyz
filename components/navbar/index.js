@@ -86,9 +86,9 @@ export default function CustomNavBar() {
         </Navbar.Link>
         <Navbar.Link
           key="examples"
-          isActive={pathname === "/login"}
+          isActive={pathname === "/examples"}
           onClick={() => {
-            router.push("/login");
+            router.push("/examples");
           }}
         >
           Examples
