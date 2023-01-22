@@ -2,7 +2,6 @@ import React from "react";
 
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { CssBaseline } from "@nextui-org/react";
-import Script from "next/script";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -86,23 +85,6 @@ class MyDocument extends Document {
             content="https://upload.wikimedia.org/wikipedia/commons/0/08/Circle-icons-rocket.svg"
           />
         </Head>
-        <Script
-          trategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-D6115F7N4Y"
-        />
-        <Script
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-D6115F7N4Y', {
-              page_path: window.location.pathname,
-            });
-          `,
-          }}
-        />
         <body>
           <Main />
           <NextScript />
