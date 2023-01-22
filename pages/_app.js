@@ -7,7 +7,6 @@ import Footer from "../components/footer/Footer.js";
 import Header from "../components/navbar";
 import Head from "next/head";
 import { getAuth } from "firebase/auth";
-import Script from "next/script";
 
 // 2. Call `createTheme` and pass your custom values
 const lightTheme = createTheme({
