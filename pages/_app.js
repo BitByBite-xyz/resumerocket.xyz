@@ -27,15 +27,9 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <Head>
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
-        />
-      </Head>
       <Script
         trategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=G-D6115F7N4Y`}
+        src="https://www.googletagmanager.com/gtag/js?id=G-D6115F7N4Y"
       />
       <Script
         strategy="afterInteractive"
@@ -50,6 +44,12 @@ function MyApp({ Component, pageProps }) {
           `,
         }}
       />
+      <Head>
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
+        />
+      </Head>
       <NextUIProvider
         value={{
           light: lightTheme.className,
