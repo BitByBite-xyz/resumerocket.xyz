@@ -25,20 +25,15 @@ export default function CustomNavBar() {
 
   const authh = getAuth(fbapp);
   const auth = getAuth();
-  let uid;
-  let userData;
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
       // User is signed in
-      uid = user.uid;
-      // console.log(user, "userr");
-      userData = {
-        email: user.email,
-        uid: user.uid,
-      };
       if (user.email !== "") {
-        setUser(userData);
+        setUser({
+          email: user.email,
+          uid: user.uid,
+        });
       }
     } else {
       console.log("uid is none");
@@ -46,15 +41,23 @@ export default function CustomNavBar() {
     }
   });
 
-  const signOut = () => {
-    signOut(auth)
-      .then(() => {
-        // Sign-out successful.
-        console.log("signed out");
-      })
-      .catch((error) => {
-        // An error happened.
-      });
+  const handleDropDownAction = (actionKey) => {
+    if (actionKey === "logout") {
+      signOut(auth)
+        .then(() => {
+          // Sign-out successful.
+          setUser({
+            email: "",
+            uid: "",
+          });
+          console.log("signed out");
+        })
+        .catch((error) => {
+          // An error happened.
+        });
+    } else {
+      console.log("ACTION KEY", actionKey);
+    }
   };
 
   return (
@@ -124,7 +127,7 @@ export default function CustomNavBar() {
             <Dropdown.Menu
               aria-label="User menu actions"
               color="primary"
-              onAction={(actionKey) => console.log({ actionKey })}
+              onAction={handleDropDownAction}
             >
               <Dropdown.Item key="profile" css={{ height: "$18" }}>
                 <Text b color="inherit" css={{ d: "flex" }}>
