@@ -41,22 +41,27 @@ export default function CustomNavBar() {
     }
   });
 
-  const handleDropDownAction = (actionKey) => {
-    if (actionKey === "logout") {
-      signOut(auth)
-        .then(() => {
-          // Sign-out successful.
-          setUser({
-            email: "",
-            uid: "",
+  const handleAction = (actionKey) => {
+    switch (actionKey) {
+      case "logout":
+        signOut(auth)
+          .then(() => {
+            // Sign-out successful.
+            setUser({
+              email: "",
+              uid: "",
+            });
+          })
+          .catch((error) => {
+            // An error happened.
+            console.log(error);
           });
-          console.log("signed out");
-        })
-        .catch((error) => {
-          // An error happened.
-        });
-    } else {
-      console.log("ACTION KEY", actionKey);
+        break;
+      case "account":
+        router.push("/account");
+        break;
+      case "settings":
+        router.push("/account");
     }
   };
 
@@ -127,7 +132,7 @@ export default function CustomNavBar() {
             <Dropdown.Menu
               aria-label="User menu actions"
               color="primary"
-              onAction={handleDropDownAction}
+              onAction={handleAction}
             >
               <Dropdown.Item key="profile" css={{ height: "$18" }}>
                 <Text b color="inherit" css={{ d: "flex" }}>
@@ -137,11 +142,11 @@ export default function CustomNavBar() {
                   {user.email}
                 </Text>
               </Dropdown.Item>
-              <Dropdown.Item key="analytics" withDivider>
+              <Dropdown.Item key="account" withDivider>
                 Account
               </Dropdown.Item>
-              <Dropdown.Item key="system">Cover Letters</Dropdown.Item>
-              <Dropdown.Item key="configurations">Settings</Dropdown.Item>
+              <Dropdown.Item key="cover_letters">Cover Letters</Dropdown.Item>
+              <Dropdown.Item key="settings">Settings</Dropdown.Item>
               <Dropdown.Item key="help_and_feedback" withDivider>
                 Help & Feedback
               </Dropdown.Item>
