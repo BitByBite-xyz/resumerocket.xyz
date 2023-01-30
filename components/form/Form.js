@@ -31,6 +31,8 @@ export default function Form(props) {
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(false);
 
+  const [errorMsg, setErrorMsg] = useState("");
+
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
@@ -45,9 +47,17 @@ export default function Form(props) {
           // ...
         })
         .catch((error) => {
-          console.log(error);
           const errorCode = error.code;
           const errorMessage = error.message;
+
+          switch (error.code) {
+            case "auth/user-not-found":
+              setErrorMsg("User not found");
+              break;
+            case "auth/wrong-password":
+              setErrorMsg("Wrong password");
+              break;
+          }
         });
     } else {
       // Sign up new user
@@ -61,7 +71,18 @@ export default function Form(props) {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          // ..
+
+          switch (error.code) {
+            case "auth/email-already-in-use":
+              setErrorMsg("Email already in use");
+              break;
+            case "auth/invalid-email":
+              setErrorMsg("Invalid email");
+              break;
+            case "auth/weak-password":
+              setErrorMsg("Weak password");
+              break;
+          }
         });
     }
   };
@@ -106,6 +127,14 @@ export default function Form(props) {
               {props.action}
             </Text>
           </Grid>
+          {errorMsg != "" ? (
+            <>
+              <Grid xs={12}>
+                <Text color="error">{errorMsg}</Text>
+              </Grid>
+              <Spacer y={1} />
+            </>
+          ) : null}
           <Spacer y={2.25} />
           <Grid xs={12}>
             <Input
@@ -114,6 +143,7 @@ export default function Form(props) {
               color="primary"
               width="90%"
               size="md"
+              // status={errorMsg !== "" ? "error" : ""}
               onChange={(e) => setEmail(e.target.value)}
             />
           </Grid>
@@ -125,6 +155,7 @@ export default function Form(props) {
               color="primary"
               width="90%"
               size="md"
+              // status={errorMsg !== "" ? "error" : ""}
               onChange={(e) => setPassword(e.target.value)}
             />
           </Grid>

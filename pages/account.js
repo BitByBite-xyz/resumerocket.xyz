@@ -1,11 +1,7 @@
-import { useState } from "react";
 import { Button, Input, Grid, Text, Row } from "@nextui-org/react";
 import { useRouter } from "next/router";
 
 export default function Account() {
-  const [isEditingEmail, changeEmail] = useState(true);
-  const [isEditingPass, changePass] = useState(true);
-
   const router = useRouter();
 
   return (
@@ -36,7 +32,7 @@ export default function Account() {
                 color="primary"
                 width="100%"
                 size="md"
-                readOnly={isEditingEmail}
+                readOnly={true}
               />
             </Grid>
           </Row>
@@ -49,7 +45,7 @@ export default function Account() {
                 color="primary"
                 width="100%"
                 size="md"
-                readOnly={isEditingPass}
+                readOnly={true}
               />
             </Grid>
           </Row>

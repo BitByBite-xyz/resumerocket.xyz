@@ -1,7 +1,6 @@
 import { initializeApp, firebase } from "firebase/app";
 
-
-export const firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyBf3BhZKvqIaUwOHRnqgm89qUbuoklcLrM",
   authDomain: "bitbybite-dotxyz.firebaseapp.com",
   projectId: "bitbybite-dotxyz",
@@ -11,9 +10,6 @@ export const firebaseConfig = {
   measurementId: "G-2CBQ7H8ZNC",
 };
 
-
-
 const fbapp = initializeApp(firebaseConfig);
-
 
 export default fbapp;
