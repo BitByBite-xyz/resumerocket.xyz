@@ -1,22 +1,11 @@
 import { Button, Input, Grid, Text, Row } from "@nextui-org/react";
-import { useRouter } from "next/router";
+import SettingNav from "../components/settings/SettingNav";
 
 export default function Account() {
-  const router = useRouter();
-
   return (
     <Grid.Container>
       <Grid md={2} xs={4}>
-        <Button.Group
-          style={{ position: "fixed", marginTop: 30 }}
-          size="lg"
-          vertical
-          flat
-        >
-          <Button onClick={() => router.push("/account")}>Account</Button>
-          <Button>Billing</Button>
-          <Button>Settings</Button>
-        </Button.Group>
+        <SettingNav />
       </Grid>
       <Grid md={10} xs={8}>
         <Grid.Container gap={3}>
