@@ -61,7 +61,7 @@ export default function CustomNavBar() {
         router.push("/account");
         break;
       case "settings":
-        router.push("/account");
+        router.push("/settings");
     }
   };
 
