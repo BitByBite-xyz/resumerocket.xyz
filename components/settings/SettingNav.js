@@ -12,27 +12,9 @@ export default function SettingNav(props) {
       vertical
       flat
     >
-      <Button onPress={() => router.push("/account")}>
-        {pathname === "/account" ? (
-          <b style={{ fontWeight: 800 }}>Account</b>
-        ) : (
-          "Account"
-        )}
-      </Button>
-      <Button onPress={() => router.push("/billing")}>
-        {pathname === "/billing" ? (
-          <b style={{ fontWeight: 800 }}>Billing</b>
-        ) : (
-          "Billing"
-        )}
-      </Button>
-      <Button onPress={() => router.push("/settings")}>
-        {pathname === "/settings" ? (
-          <b style={{ fontWeight: 800 }}>Settings</b>
-        ) : (
-          "Settings"
-        )}
-      </Button>
+      <Button onPress={() => router.push("/account")}>Acccount</Button>
+      <Button onPress={() => router.push("/billing")}>Billing</Button>
+      <Button onPress={() => router.push("/settings")}>Settings</Button>
     </Button.Group>
   );
 }
