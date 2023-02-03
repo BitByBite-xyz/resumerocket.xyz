@@ -20,9 +20,18 @@ export default function PriceSelection(props) {
         <Spacer y={1} />
         <Text>{props.description}</Text>
         <Spacer y={1.5} />
-        <Button onClick={props.onSelect} size="lg">
-          Select
-        </Button>
+        <form
+          action={
+            props.mode == "payment"
+              ? "http://localhost:4242/payment-checkout-session"
+              : "http://localhost:4242/subscription-checkout-session"
+          }
+          method="POST"
+        >
+          <Button type="submit" size="lg">
+            Select
+          </Button>
+        </form>
       </Card.Body>
     </Card>
   );

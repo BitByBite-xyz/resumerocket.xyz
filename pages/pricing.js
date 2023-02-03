@@ -15,7 +15,7 @@ export default function Pricing() {
             price="$4.99"
             amount="cover letter"
             description="A fixed price for each custom-tailored cover letters generated at the power of a few clicks."
-            onSelect={() => router.push("/checkout?plan=basic")}
+            mode="payment"
           />
         </Grid>
         <Grid md={4} xs={12}>
@@ -24,7 +24,7 @@ export default function Pricing() {
             price="$29.99"
             amount="month"
             description="Unlimited custom-tailored cover letter generated at the power of a few clicks."
-            onSelect={() => router.push("/checkout?plan=premium")}
+            mode="subscription"
           />
         </Grid>
       </Grid.Container>
