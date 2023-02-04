@@ -20,14 +20,7 @@ export default function PriceSelection(props) {
         <Spacer y={1} />
         <Text>{props.description}</Text>
         <Spacer y={1.5} />
-        <form
-          action={
-            props.mode == "payment"
-              ? "/api/checkout?mode=payment"
-              : "/api/checkout?mode=subscription"
-          }
-          method="POST"
-        >
+        <form action={"/api/checkout?mode=" + props.mode} method="POST">
           <Button type="submit" size="lg">
             Select
           </Button>
