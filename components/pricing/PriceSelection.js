@@ -23,8 +23,8 @@ export default function PriceSelection(props) {
         <form
           action={
             props.mode == "payment"
-              ? "http://localhost:4242/payment-checkout-session"
-              : "http://localhost:4242/subscription-checkout-session"
+              ? "/api/checkout?mode=payment"
+              : "/api/checkout?mode=subscription"
           }
           method="POST"
         >
