@@ -7,7 +7,7 @@ const cors = Cors({
 });
 
 // Initializing the Stripe API
-const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
+const stripe = Stripe(STRIPE_SECRET_KEY);
 
 // Helper method to wait for a middleware to execute before continuing
 // And to throw an error when an error happens in a middleware
