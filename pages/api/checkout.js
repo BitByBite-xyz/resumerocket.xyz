@@ -41,8 +41,8 @@ export default async function handler(req, res) {
             },
           ],
           mode: "payment",
-          success_url: "http://localhost:3000/pricing",
-          cancel_url: "http://localhost:3000/pricing",
+          success_url: "https://resumerocket.xyz/pricing",
+          cancel_url: "https://resumerocket.xyz/pricing",
         })
       : await stripe.checkout.sessions.create({
           line_items: [
@@ -52,8 +52,8 @@ export default async function handler(req, res) {
             },
           ],
           mode: "subscription",
-          success_url: "http://localhost:3000/pricing",
-          cancel_url: "http://localhost:3000/pricing",
+          success_url: "https://resumerocket.xyz/pricing",
+          cancel_url: "https://resumerocket.xyz/pricing",
         });
 
   res.redirect(303, session.url);
