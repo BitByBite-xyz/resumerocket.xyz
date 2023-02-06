@@ -7,7 +7,7 @@ const cors = Cors({
 });
 
 // Initializing the Stripe API
-const stripe = Stripe(STRIPE_SECRET_KEY);
+const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
 // Helper method to wait for a middleware to execute before continuing
 // And to throw an error when an error happens in a middleware
@@ -41,8 +41,8 @@ export default async function handler(req, res) {
             },
           ],
           mode: "payment",
-          success_url: `http://localhost:3000/pricing`,
-          cancel_url: `http://localhost:3000/pricing`,
+          success_url: "http://localhost:3000/pricing",
+          cancel_url: "http://localhost:3000/pricing",
         })
       : await stripe.checkout.sessions.create({
           line_items: [
@@ -52,8 +52,8 @@ export default async function handler(req, res) {
             },
           ],
           mode: "subscription",
-          success_url: `http://localhost:3000/pricing`,
-          cancel_url: `http://localhost:3000/pricing`,
+          success_url: "http://localhost:3000/pricing",
+          cancel_url: "http://localhost:3000/pricing",
         });
 
   res.redirect(303, session.url);
