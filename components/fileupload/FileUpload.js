@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Card, Grid, Text, Link } from "@nextui-org/react";
 import { DeleteIcon } from "./DeleteIcon";
 import { IconButton } from "./IconButton";

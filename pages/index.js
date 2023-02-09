@@ -1,5 +1,4 @@
-import styles from "../styles/Home.module.css";
-import { Text, Grid, Button, Spacer, Card, Navbar } from "@nextui-org/react";
+import { Text, Grid, Button, Spacer, Card } from "@nextui-org/react";
 import { useRouter } from "next/router";
 
 export const AcmeLogo = () => (

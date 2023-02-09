@@ -1,9 +1,8 @@
-import { Grid, Link, Text, useTheme } from "@nextui-org/react";
+import { Grid, Link, Text } from "@nextui-org/react";
 import { useRouter } from "next/router";
 
 export default function Footer() {
   const router = useRouter();
-  const { isDark } = useTheme();
 
   return (
     <>

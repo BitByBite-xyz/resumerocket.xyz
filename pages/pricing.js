@@ -1,9 +1,7 @@
-import { useRouter } from "next/router";
 import { Grid, Text, Spacer } from "@nextui-org/react";
 import PriceSelection from "../components/pricing/PriceSelection.js";
 
 export default function Pricing() {
-  const router = useRouter();
   return (
     <>
       <Text h1>Pricing</Text>

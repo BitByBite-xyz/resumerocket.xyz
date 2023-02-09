@@ -1,8 +1,6 @@
-import { Text, Grid, Button, Spacer, Card, Navbar } from "@nextui-org/react";
-import { useRouter } from "next/router";
+import { Text, Grid, Spacer, Card } from "@nextui-org/react";
 
 export default function Examples() {
-  const router = useRouter();
   return (
     <>
       <Grid.Container>

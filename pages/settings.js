@@ -1,4 +1,4 @@
-import { Grid, Text, Row, Switch, Spacer, Button } from "@nextui-org/react";
+import { Grid, Text, Row, Switch, Spacer } from "@nextui-org/react";
 import SettingNav from "../components/settings/SettingNav";
 
 export default function Settings() {
