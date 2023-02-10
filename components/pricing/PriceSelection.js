@@ -22,7 +22,8 @@ export default function PriceSelection(props) {
         <Spacer y={1.5} />
         <form
           action={
-            "https://us-central1-resumerocket-82b20.cloudfunctions.net/createCheckoutSession"
+            "https://us-central1-resumerocket-82b20.cloudfunctions.net/createCheckoutSession?mode=" +
+            props.mode
           }
           method="POST"
         >
