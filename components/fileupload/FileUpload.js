@@ -40,6 +40,7 @@ export default function FileUpload(props) {
             style={{
               position: "absolute",
               marginLeft: "70px",
+              marginRight: "70px",
               marginTop: "65px",
             }}
             b
