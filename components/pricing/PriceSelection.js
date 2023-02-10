@@ -20,7 +20,12 @@ export default function PriceSelection(props) {
         <Spacer y={1} />
         <Text>{props.description}</Text>
         <Spacer y={1.5} />
-        <form action={"/api/checkout?mode=" + props.mode} method="POST">
+        <form
+          action={
+            "https://us-central1-resumerocket-82b20.cloudfunctions.net/createCheckoutSession"
+          }
+          method="POST"
+        >
           <Button type="submit" size="lg">
             Select
           </Button>
