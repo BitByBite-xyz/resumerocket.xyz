@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { createTheme, NextUIProvider, Spacer } from "@nextui-org/react";
 
 import { getAuth } from "firebase/auth";
@@ -20,9 +20,34 @@ const darkTheme = createTheme({
 });
 
 function MyApp({ Component, pageProps }) {
+  const [isDark, setIsDark] = useState(false);
+
   useEffect(() => {
     // Initialize Firebase
     const auth = getAuth(fbb);
+
+    // you can use any storage
+    let theme = window.localStorage.getItem("data-theme");
+
+    setIsDark(theme === "dark");
+
+    const observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        if (mutation.attributeName === "data-theme") {
+          document.documentElement.style.setProperty(
+            "--theme-color",
+            mutation.target.getAttribute("data-theme")
+          );
+        }
+      });
+    });
+
+    observer.observe(document?.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    console.log("isDark: " + isDark);
   }, []);
 
   return (
@@ -33,7 +58,7 @@ function MyApp({ Component, pageProps }) {
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
         />
       </Head>
-      <NextUIProvider theme={lightTheme}>
+      <NextUIProvider theme={isDark ? darkTheme : lightTheme}>
         <Header />
         <div style={{ minHeight: "100vh", width: "90%", marginLeft: "3%" }}>
           <Box css={{ px: "$12", mt: "$8", "@xsMax": { px: "$10" } }}>

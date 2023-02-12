@@ -14,6 +14,7 @@ export default function Settings() {
 
   const handleChange = () => {
     const nextTheme = isDark ? "light" : "dark";
+    window.localStorage.setItem("data-theme", nextTheme);
     changeTheme(nextTheme);
   };
   return (
