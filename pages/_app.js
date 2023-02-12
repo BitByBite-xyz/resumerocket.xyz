@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { createTheme, NextUIProvider, Spacer } from "@nextui-org/react";
-import { useRouter } from "next/router";
 
 import { getAuth } from "firebase/auth";
 
@@ -21,7 +20,6 @@ const darkTheme = createTheme({
 });
 
 function MyApp({ Component, pageProps }) {
-  const router = useRouter();
   useEffect(() => {
     // Initialize Firebase
     const auth = getAuth(fbb);
@@ -35,12 +33,7 @@ function MyApp({ Component, pageProps }) {
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
         />
       </Head>
-      <NextUIProvider
-        value={{
-          light: lightTheme.className,
-          dark: darkTheme.className,
-        }}
-      >
+      <NextUIProvider theme={lightTheme}>
         <Header />
         <div style={{ minHeight: "100vh", width: "90%", marginLeft: "3%" }}>
           <Box css={{ px: "$12", mt: "$8", "@xsMax": { px: "$10" } }}>
