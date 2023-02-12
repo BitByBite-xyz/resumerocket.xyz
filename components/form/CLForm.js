@@ -2,7 +2,19 @@ import { useState } from "react";
 import { Card, Input, Grid, Button, Spacer, Loading } from "@nextui-org/react";
 
 export default function CLForm(props) {
+  const [company, setCompany] = useState("");
+  const [jobTitle, setJobTitle] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const handleSubmit = () => {
+    setLoading(true);
+
+    // Temporary delay to simulate loading
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  };
+
   return (
     <Card
       style={{ paddingLeft: 23, paddingTop: 15, paddingBottom: 15 }}
@@ -17,6 +29,7 @@ export default function CLForm(props) {
               color="primary"
               width="90%"
               size="md"
+              onChange={(e) => setCompany(e.target.value)}
             />
           </Grid>
           <Spacer y={1.5} />
@@ -27,15 +40,12 @@ export default function CLForm(props) {
               color="primary"
               width="90%"
               size="md"
+              onChange={(e) => setJobTitle(e.target.value)}
             />
           </Grid>
           <Spacer y={1} />
           <Grid xs={12}>
-            <Button
-              onClick={() => setLoading(!loading)}
-              size="lg"
-              css={{ width: "90%" }}
-            >
+            <Button onClick={handleSubmit} size="lg" css={{ width: "90%" }}>
               {loading ? (
                 <Loading color="currentColor" size="sm" />
               ) : (
