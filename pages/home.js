@@ -1,12 +1,28 @@
 import { useState, useRef } from "react";
-import { Grid, Text, Spacer } from "@nextui-org/react";
+import {
+  Loading,
+  Card,
+  Input,
+  Button,
+  Grid,
+  Text,
+  Spacer,
+} from "@nextui-org/react";
+import { ref, uploadBytesResumable } from "firebase/storage";
+import { storage } from "../config/firebaseConfig.js";
+
 import FileUpload from "../components/fileupload/FileUpload.js";
-import CLForm from "../components/form/CLForm.js";
 import CoverLetter from "../components/coverletter/CoverLetter.js";
 
 export default function Home() {
   const [text, setText] = useState("");
   const [fileName, setFileName] = useState("");
+  const [file, setFile] = useState([]);
+
+  const [company, setCompany] = useState("");
+  const [jobTitle, setJobTitle] = useState("");
+
+  const [loading, setLoading] = useState(false);
 
   const fileInput = useRef(null);
 
@@ -19,6 +35,7 @@ export default function Home() {
     } else if (event.target !== undefined) {
       file = event.target.files[0];
     }
+    setFile(file);
     setFileName(file.name);
 
     const reader = new FileReader();
@@ -35,6 +52,20 @@ export default function Home() {
     setText("");
   };
 
+  const handleSubmit = (event) => {
+    const storageRef = ref(storage, `files/${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    setLoading(true);
+
+    // Upload file to Firebase Storage
+    uploadBytesResumable(storageRef, file).then((snapshot) => {
+      setLoading(false);
+    });
+
+    console.log("Company: " + company);
+    console.log("Job Title: " + jobTitle);
+  };
   return (
     <>
       <Text h1>Create Cover Letter</Text>
@@ -50,7 +81,50 @@ export default function Home() {
         </Grid>
         <Grid xs={6}>{text ? <CoverLetter text={text} /> : null}</Grid>
         <Grid style={{ position: "absolute", marginTop: 250 }} md={6} xs={9.5}>
-          <CLForm />
+          <Card
+            style={{ paddingLeft: 23, paddingTop: 15, paddingBottom: 15 }}
+            css={{ mw: "450px" }}
+          >
+            <Card.Body css={{ py: "$10" }}>
+              <Grid.Container>
+                <Grid xs={12}>
+                  <Input
+                    bordered
+                    placeholder="Company"
+                    color="primary"
+                    width="90%"
+                    size="md"
+                    onChange={(e) => setCompany(e.target.value)}
+                  />
+                </Grid>
+                <Spacer y={1.5} />
+                <Grid xs={12}>
+                  <Input
+                    bordered
+                    placeholder="Job Title"
+                    color="primary"
+                    width="90%"
+                    size="md"
+                    onChange={(e) => setJobTitle(e.target.value)}
+                  />
+                </Grid>
+                <Spacer y={1} />
+                <Grid xs={12}>
+                  <Button
+                    onPress={handleSubmit}
+                    size="lg"
+                    css={{ width: "90%" }}
+                  >
+                    {loading ? (
+                      <Loading color="currentColor" size="sm" />
+                    ) : (
+                      <>Generate Cover Letter</>
+                    )}
+                  </Button>
+                </Grid>
+              </Grid.Container>
+            </Card.Body>
+          </Card>
         </Grid>
       </Grid.Container>
       {!text ? <Spacer y={20} /> : null}{" "}

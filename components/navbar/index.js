@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 import { AcmeLogo } from "./Logo.js";
 
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
-import fbapp from "../../config/firebaseConfig";
+import { fbapp } from "../../config/firebaseConfig";
 
 export default function CustomNavBar() {
   const router = useRouter();

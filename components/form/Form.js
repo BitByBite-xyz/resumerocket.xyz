@@ -19,7 +19,7 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
 } from "firebase/auth";
-import fbapp from "../../config/firebaseConfig";
+import { fbapp } from "../../config/firebaseConfig";
 import { GoogleIcon } from "../../assets/GoogleIcon.js";
 
 export default function Form(props) {
