@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState, useRef } from "react";
 import {
   Loading,
@@ -10,7 +11,7 @@ import {
 } from "@nextui-org/react";
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { ref, uploadBytesResumable } from "firebase/storage";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from "../config/firebaseConfig.js";
 
 import FileUpload from "../components/fileupload/FileUpload.js";
@@ -62,17 +63,26 @@ export default function Home() {
         setLoading(true);
 
         // Upload file to Firebase Storage
-        uploadBytesResumable(storageRef, file).then((snapshot) => {
+        uploadBytesResumable(storageRef, file).then(async (snapshot) => {
           setLoading(false);
+
+          // Get the download URL of the uploaded file
+          const path = `resumes/${user.uid}/${file.name}`;
+
+          // Call the Google Cloud Function with the file URL
+          const apiUrl =
+            "https://us-central1-bitbybite-dotxyz.cloudfunctions.net/extractText";
+          const response = await axios.get(apiUrl, { params: { path } });
+
+          // Log the response from the Google Cloud Function
+          console.log(response.data);
         });
       } else {
         router.push("/login");
       }
     });
-
-    console.log("Company: " + company);
-    console.log("Job Title: " + jobTitle);
   };
+
   return (
     <>
       <Text h1>Create Cover Letter</Text>
