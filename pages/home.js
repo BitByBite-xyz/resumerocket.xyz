@@ -8,6 +8,8 @@ import {
   Text,
   Spacer,
 } from "@nextui-org/react";
+
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../config/firebaseConfig.js";
 
@@ -52,15 +54,20 @@ export default function Home() {
     setText("");
   };
 
-  const handleSubmit = (event) => {
-    const storageRef = ref(storage, `files/${file.name}`);
-    const uploadTask = uploadBytesResumable(storageRef, file);
+  const handleSubmit = () => {
+    onAuthStateChanged(getAuth(), async (user) => {
+      if (user) {
+        const storageRef = ref(storage, `resumes/${user.uid}/${file.name}`);
+        const uploadTask = uploadBytesResumable(storageRef, file);
+        setLoading(true);
 
-    setLoading(true);
-
-    // Upload file to Firebase Storage
-    uploadBytesResumable(storageRef, file).then((snapshot) => {
-      setLoading(false);
+        // Upload file to Firebase Storage
+        uploadBytesResumable(storageRef, file).then((snapshot) => {
+          setLoading(false);
+        });
+      } else {
+        router.push("/login");
+      }
     });
 
     console.log("Company: " + company);
