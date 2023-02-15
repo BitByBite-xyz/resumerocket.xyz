@@ -41,11 +41,11 @@ export default function Home() {
     setFile(file);
     setFileName(file.name);
 
-    const reader = new FileReader();
-    reader.onload = () => {
-      setText(reader.result);
-    };
-    reader.readAsText(file);
+    // const reader = new FileReader();
+    // reader.onload = () => {
+    //   setText(reader.result);
+    // };
+    // reader.readAsText(file);
   };
 
   const handleClick = (event) => {
@@ -64,18 +64,19 @@ export default function Home() {
 
         // Upload file to Firebase Storage
         uploadBytesResumable(storageRef, file).then(async (snapshot) => {
-          setLoading(false);
-
           // Get the download URL of the uploaded file
           const path = `resumes/${user.uid}/${file.name}`;
 
           // Call the Google Cloud Function with the file URL
           const apiUrl =
-            "https://us-central1-bitbybite-dotxyz.cloudfunctions.net/extractText";
-          const response = await axios.get(apiUrl, { params: { path } });
+            "https://us-central1-bitbybite-dotxyz.cloudfunctions.net/extractDocxText";
+          const response = await axios.get(apiUrl, {
+            params: { path, jobTitle, company },
+          });
 
-          // Log the response from the Google Cloud Function
-          console.log(response.data);
+          // Set the text state to the response from the Google Cloud Function
+          setText(response.data);
+          setLoading(false);
         });
       } else {
         router.push("/login");
