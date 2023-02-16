@@ -139,6 +139,7 @@ export default function Form(props) {
           <Grid xs={12}>
             <Input
               bordered
+              aria-label="Email"
               labelPlaceholder="Email"
               color="primary"
               width="90%"
@@ -151,6 +152,7 @@ export default function Form(props) {
           <Grid xs={12}>
             <Input.Password
               bordered
+              aria-label="Password"
               labelPlaceholder="Password"
               color="primary"
               width="90%"

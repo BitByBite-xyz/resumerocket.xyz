@@ -109,6 +109,7 @@ export default function Home() {
                 <Grid xs={12}>
                   <Input
                     bordered
+                    aria-label="Company"
                     placeholder="Company"
                     color="primary"
                     width="90%"
@@ -120,6 +121,7 @@ export default function Home() {
                 <Grid xs={12}>
                   <Input
                     bordered
+                    aria-label="Job Title"
                     placeholder="Job Title"
                     color="primary"
                     width="90%"
