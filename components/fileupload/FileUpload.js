@@ -46,7 +46,7 @@ export default function FileUpload(props) {
             b
           >
             Drag and drop resume, or{" "}
-            <Link onClick={() => document.getElementById("file-input").click()}>
+            <Link onPress={() => document.getElementById("file-input").click()}>
               Browse
             </Link>
           </Text>

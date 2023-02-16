@@ -161,13 +161,13 @@ export default function Form(props) {
           </Grid>
           <Spacer y={1} />
           <Grid xs={12}>
-            <Checkbox onClick={() => setRemember(!remember)} size="sm">
+            <Checkbox onPress={() => setRemember(!remember)} size="sm">
               <Text>Remember me</Text>
             </Checkbox>
           </Grid>
           <Spacer y={1} />
           <Grid xs={12}>
-            <Button onClick={handleSubmit} size="lg" css={{ width: "90%" }}>
+            <Button onPress={handleSubmit} size="lg" css={{ width: "90%" }}>
               {loading ? (
                 <Loading color="currentColor" size="sm" />
               ) : (
@@ -184,7 +184,7 @@ export default function Form(props) {
               css={{ width: "90%" }}
               auto
               ghost
-              onClick={loginWithGoogle}
+              onPress={loginWithGoogle}
             >
               Sign in with Google
             </Button>
@@ -194,12 +194,12 @@ export default function Form(props) {
             {isLogin ? (
               <Text>
                 Don&apos;t have an account?{" "}
-                <Link onClick={() => router.push("/signup")}>Sign up</Link>
+                <Link onPress={() => router.push("/signup")}>Sign up</Link>
               </Text>
             ) : (
               <Text>
                 Already have an account?{" "}
-                <Link onClick={() => router.push("/login")}>Login</Link>
+                <Link onPress={() => router.push("/login")}>Login</Link>
               </Text>
             )}
           </Grid>

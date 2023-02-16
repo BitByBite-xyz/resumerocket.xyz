@@ -104,7 +104,7 @@ export default function CheckoutForm(props) {
             </div>
           </Grid>
           <Grid xs={12}>
-            <Button onClick={handleSubmit} size="lg" css={{ width: "100%" }}>
+            <Button onPress={handleSubmit} size="lg" css={{ width: "100%" }}>
               Make Payment
             </Button>
           </Grid>

@@ -44,7 +44,7 @@ export default function Index() {
           </Text>
         </Grid>
         <Grid xs={12}>
-          <Button onClick={() => router.push("/home")}>Get Started</Button>
+          <Button onPress={() => router.push("/home")}>Get Started</Button>
         </Grid>
         <Spacer y={2} />
         <Grid xs={12}>

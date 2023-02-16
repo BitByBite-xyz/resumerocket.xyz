@@ -30,7 +30,7 @@ export default function Footer() {
             </Text>
           </Grid>
           <Grid xs={4}>
-            <Link onClick={() => router.push("/tos")}>
+            <Link onPress={() => router.push("/tos")}>
               <Text b>Terms of Service</Text>
             </Link>
           </Grid>

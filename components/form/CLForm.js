@@ -45,7 +45,7 @@ export default function CLForm(props) {
           </Grid>
           <Spacer y={1} />
           <Grid xs={12}>
-            <Button onClick={handleSubmit} size="lg" css={{ width: "90%" }}>
+            <Button onPress={handleSubmit} size="lg" css={{ width: "90%" }}>
               {loading ? (
                 <Loading color="currentColor" size="sm" />
               ) : (

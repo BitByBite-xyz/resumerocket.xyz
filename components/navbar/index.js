@@ -76,7 +76,7 @@ export default function CustomNavBar() {
       </Navbar.Brand>
       <Navbar.Content hideIn="xs" variant="underline">
         <Navbar.Link
-          onClick={() => {
+          onPress={() => {
             router.push("/home");
           }}
           isActive={pathname == "/home"}
@@ -84,7 +84,7 @@ export default function CustomNavBar() {
           Create a Cover Letter
         </Navbar.Link>
         <Navbar.Link
-          onClick={() => {
+          onPress={() => {
             router.push("/pricing");
           }}
           isActive={pathname === "/pricing"}
@@ -95,7 +95,7 @@ export default function CustomNavBar() {
         <Navbar.Link
           key="examples"
           isActive={pathname === "/examples"}
-          onClick={() => {
+          onPress={() => {
             router.push("/examples");
           }}
         >
@@ -105,11 +105,11 @@ export default function CustomNavBar() {
 
       {user.email === "" ? (
         <Navbar.Content>
-          <Navbar.Link color="inherit" onClick={() => router.push("/login")}>
+          <Navbar.Link color="inherit" onPress={() => router.push("/login")}>
             Login
           </Navbar.Link>
           <Navbar.Item>
-            <Button auto flat as={Link} onClick={() => router.push("/signup")}>
+            <Button auto flat as={Link} onPress={() => router.push("/signup")}>
               Sign Up
             </Button>
           </Navbar.Item>
@@ -151,7 +151,7 @@ export default function CustomNavBar() {
                 Help & Feedback
               </Dropdown.Item>
               <Dropdown.Item
-                onClick={signOut}
+                onPress={signOut}
                 key="logout"
                 withDivider
                 color="error"
@@ -170,7 +170,7 @@ export default function CustomNavBar() {
             css={{
               minWidth: "100%",
             }}
-            onClick={() => router.push("/home")}
+            onPress={() => router.push("/home")}
           >
             Create a Cover Letter
           </Link>
@@ -181,7 +181,7 @@ export default function CustomNavBar() {
             css={{
               minWidth: "100%",
             }}
-            onClick={() => router.push("/pricing")}
+            onPress={() => router.push("/pricing")}
           >
             Pricing
           </Link>
@@ -192,7 +192,7 @@ export default function CustomNavBar() {
             css={{
               minWidth: "100%",
             }}
-            onClick={() => router.push("/login")}
+            onPress={() => router.push("/login")}
           >
             Examples
           </Link>
