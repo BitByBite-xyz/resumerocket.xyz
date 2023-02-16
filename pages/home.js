@@ -9,9 +9,9 @@ import {
   Text,
   Spacer,
 } from "@nextui-org/react";
-
+import { useRouter } from "next/router.js";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../config/firebaseConfig.js";
 
 import FileUpload from "../components/fileupload/FileUpload.js";
@@ -79,7 +79,7 @@ export default function Home() {
           setLoading(false);
         });
       } else {
-        router.push("/login");
+        useRouter().push("/login");
       }
     });
   };
