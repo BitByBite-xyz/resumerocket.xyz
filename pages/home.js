@@ -71,7 +71,7 @@ export default function Home() {
 
           // Call the Google Cloud Function with the file URL
           const apiUrl =
-            "https://us-central1-bitbybite-dotxyz.cloudfunctions.net/extractText";
+            "https://us-central1-bitbybite-dotxyz.cloudfunctions.net/generateCL";
           const response = await axios.get(apiUrl, {
             params: { path, jobTitle, company },
           });
