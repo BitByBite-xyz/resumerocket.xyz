@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { Input, Grid, Text, Row } from "@nextui-org/react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -10,20 +10,26 @@ export default function Account() {
   const auth = getAuth();
   const router = useRouter();
 
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in
-      if (user.email !== "") {
-        setUser({
-          email: user.email,
-          uid: user.uid,
-        });
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in
+        if (user.email !== "") {
+          setUser({
+            email: user.email,
+            uid: user.uid,
+          });
+        }
+      } else {
+        // If user is not logged in, redirect to login page
+        router.push("/login");
       }
-    } else {
-      // If user is not logged in, redirect to login page
-      router.push("/login");
-    }
-  });
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, [auth, router]);
 
   return (
     <Grid.Container>
@@ -52,6 +58,7 @@ export default function Account() {
             <Grid md={3} xs={12}>
               <Input.Password
                 bordered
+                aria-label="Password"
                 label="Password"
                 initialValue="password123"
                 color="primary"
