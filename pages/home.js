@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState, useRef } from "react";
 import {
   Loading,
@@ -42,12 +41,6 @@ export default function Home() {
     }
     setFile(file);
     setFileName(file.name);
-
-    // const reader = new FileReader();
-    // reader.onload = () => {
-    //   setText(reader.result);
-    // };
-    // reader.readAsText(file);
   };
 
   const handleClick = (event) => {
@@ -71,14 +64,20 @@ export default function Home() {
 
           // Call the Google Cloud Function with the file URL
           const apiUrl =
-            "https://us-central1-bitbybite-dotxyz.cloudfunctions.net/generateCL";
-          const response = await axios.get(apiUrl, {
-            params: { path, jobTitle, company },
-          });
+            "https://us-central1-bitbybite-dotxyz.cloudfunctions.net/extractDocxText";
+          const params = new URLSearchParams({ path, jobTitle, company });
 
-          // Set the text state to the response from the Google Cloud Function
-          setText(response.data);
-          setLoading(false);
+          try {
+            const response = await fetch(`${apiUrl}?${params}`);
+            const data = await response.text();
+
+            // Set the text state to the response from the Google Cloud Function
+            setText(data);
+            setLoading(false);
+          } catch (error) {
+            setLoading(false);
+            console.error(error);
+          }
         });
       } else {
         router.push("/login");
