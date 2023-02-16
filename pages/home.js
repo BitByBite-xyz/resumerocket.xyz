@@ -98,7 +98,7 @@ export default function Home() {
             formRef={fileInput}
           />
         </Grid>
-        <Grid xs={6}>{text ? <CoverLetter text={text} /> : null}</Grid>
+        <Grid xs={7}>{text ? <CoverLetter text={text} /> : null}</Grid>
         <Grid style={{ position: "absolute", marginTop: 250 }} md={6} xs={9.5}>
           <Card
             style={{ paddingLeft: 23, paddingTop: 15, paddingBottom: 15 }}
