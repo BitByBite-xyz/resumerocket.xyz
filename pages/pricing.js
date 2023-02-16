@@ -26,15 +26,14 @@ export default function Pricing() {
           />
         </Grid>
       </Grid.Container>
-      <Spacer y={1} />
+      {/* <Spacer y={1} />
       <Text size="$lg">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Purus gravida quis
-        blandit turpis. Augue neque gravida in fermentum et sollicitudin ac
-        orci. Et sollicitudin ac orci phasellus egestas. Elementum tempus
-        egestas sed sed risus pretium quam vulputate. Interdum velit euismod in
-        pellentesque massa placerat duis ultricies.
-      </Text>
+        Our basic plan starts at just $4.99 per resume, which includes a custom
+        tailored cover letter. If you're looking for unlimited cover letters,
+        our monthly subscription plan is just $29.99 a month. With this plan,
+        you'll have the flexibility to create as many custom tailored cover
+        letters as you need to help you land your dream job.
+      </Text> */}
     </>
   );
 }

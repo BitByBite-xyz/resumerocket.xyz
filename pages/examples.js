@@ -15,30 +15,53 @@ export default function Examples() {
           <Card style={{ padding: "20px 40px 20px 40px" }} css={{ width: 800 }}>
             <Card.Body css={{ py: "$10" }}>
               <Text>
-                Dear Amazon, <br />
-                <br />I am writing today in regards to the open Machine Learning
-                Engineer position. Based on the job description and my research
-                of Amazon, I believe that I would be a great fit for this role.
-                My education and research experience have given me the skills
-                necessary to excel in this position. I am currently a CIERA
-                Post-Baccalaureate Fellow at Northwestern University, where I am
-                researching and developing machine learning models that will
-                increase detail of previous stellar evolution simulations. I
-                have also built a biomedical image classifier ensemble using
-                TensorFlow and an object detector in Pytorch. My experience with
-                machine learning, as well as my experience with programming in
-                Python, C, and C++, makes me confident that I would be an asset
-                to the Amazon team. In addition to my technical skills, I also
-                have excellent communication skills. I am a native English
-                speaker, and I am also fluent in German and Brazilian
-                Portuguese. I am confident that I can effectively communicate
-                with people from all over the world, which would be an asset in
-                a global company like Amazon. I believe that I have the skills
-                and experience necessary to be a successful Machine Learning
-                Engineer at Amazon. I am excited to learn and grow in this role,
-                and I am confident that I can make a positive contribution to
-                the team. Thank you for your time and consideration, and I look
-                forward to hearing from you.
+                Dear Hiring Manager,
+                <br />
+                <br />I am writing to apply for the Software Engineer position
+                at Amazon. As a current student of Computer Science at the
+                University of Marquette, I have had the opportunity to gain a
+                comprehensive understanding of programming languages and
+                software development. I have taken courses in Object-Oriented
+                Programming I, Data Structures, Hardware Systems, and
+                Algorithms, which have enabled me to develop the key skills
+                necessary for a successful software engineer.
+                <br />
+                <br />
+                In addition, I have gained experience working with a variety of
+                technologies, such as Java, JavaScript, React, React Native,
+                HTML, CSS, Sketch, C, Python, PHP, SQL, Adobe Photoshop, and
+                Adobe Illustrator. I have also had the opportunity to lead a
+                team of developers and am familiar with the process of creating
+                mobile and web applications, as well as websites. I am confident
+                that my skills, experience, and knowledge will be an asset to
+                your team.
+                <br />
+                <br />
+                Most recently, I have been working as a Data Analytics Intern at
+                Caterpillar, where I have identified and implemented fixes to
+                the codebase, migrated old tests in the codebase to a newer
+                testing library, refactored old tests, and implemented business
+                features. Additionally, I have been the co-founder and Chief
+                Technology Officer at BitByBite Inc. since 2015, where I have
+                helped develop several applications in JavaScript, worked with
+                clients to create and outline the user interface of their
+                application using Sketch, and reviewed and edited the work of
+                other programmers.
+                <br />
+                <br />
+                I am thrilled at the prospect of joining your team and
+                contributing to the success of Amazon. I am confident that my
+                skills and experience make me an ideal candidate for the
+                position. I look forward to speaking with you further about this
+                opportunity.
+                <br />
+                <br />
+                Thank you for your time and consideration.
+                <br />
+                <br />
+                Sincerely,
+                <br />
+                John Doe
               </Text>
             </Card.Body>
           </Card>
@@ -52,13 +75,14 @@ export default function Examples() {
           <Card style={{ padding: "20px 40px 20px 40px" }} css={{ width: 800 }}>
             <Card.Body css={{ py: "$10" }}>
               <Text>
-                Dear Hiring Manager,
-                <br />
-                <br /> I am writing to apply for the Software Engineer position
+                Dear Hiring Manager, <br />
+                <br />I am writing to apply for the Software Engineer position
                 at Caterpillar. With a Bachelor of Science in Computer Science
                 from Denison University and a passion for building innovative
                 software solutions, I believe I have the necessary skills and
                 enthusiasm to make a positive contribution to your team.
+                <br />
+                <br />
                 Throughout my academic career, I have developed a diverse set of
                 skills through technical courses such as Applied Statistics,
                 Computer Systems, Data Structures, Data Systems, Software
@@ -67,29 +91,38 @@ export default function Examples() {
                 Algorithms. I am proficient in programming languages such as
                 Python, C, C++, Git, LATEX, PyTorch, TensorFlow, Pandas,
                 Matplotlib, and NumPy. Additionally, I am fluent in English,
-                German, and Brasilian Portuguese. I have experience in both
-                research and development of machine learning models. As a CIERA
-                Post-Baccalaureate Fellow at Northwestern University, I
-                researched and developed machine learning models that increased
-                the detail of previous stellar evolution simulations. In
-                addition, I created image classification and object detection
-                preprocessing pipelines, built a biomedical image classifier
-                ensemble using TensorFlow and an object detector in Pytorch, and
-                implemented various evaluation metrics for both classification
-                and object detection problems. I am also an experienced project
-                manager and have led a successful project, Lokel, that connects
-                college students with events hosted by small businesses, their
-                peers, and campus organizations. My team won a school pitch
-                competition at Denison University and I personally led a small
-                team of business and sales oriented people to acquire 10% of
-                Denison’s student body as users two weeks after launch. I am
-                confident that my professional experience and technical skills
-                make me an ideal candidate for the Software Engineer position at
-                Caterpillar. I would be delighted to discuss the position and my
-                qualifications further in an interview. Thank you for your time
-                and consideration. <br />
+                German, and Brasilian Portuguese.
                 <br />
-                Sincerely, <br />
+                <br />I have experience in both research and development of
+                machine learning models. As a CIERA Post-Baccalaureate Fellow at
+                Northwestern University, I researched and developed machine
+                learning models that increased the detail of previous stellar
+                evolution simulations. In addition, I created image
+                classification and object detection preprocessing pipelines,
+                built a biomedical image classifier ensemble using TensorFlow
+                and an object detector in Pytorch, and implemented various
+                evaluation metrics for both classification and object detection
+                problems.
+                <br />
+                <br />
+                I am also an experienced project manager and have led a
+                successful project, Lokel, that connects college students with
+                events hosted by small businesses, their peers, and campus
+                organizations. My team won a school pitch competition at Denison
+                University and I personally led a small team of business and
+                sales oriented people to acquire 10% of Denison’s student body
+                as users two weeks after launch.
+                <br />
+                <br />
+                I am confident that my professional experience and technical
+                skills make me an ideal candidate for the Software Engineer
+                position at Caterpillar. I would be delighted to discuss the
+                position and my qualifications further in an interview. Thank
+                you for your time and consideration.
+                <br />
+                <br />
+                Sincerely,
+                <br />
                 Daniel Smith
               </Text>
             </Card.Body>
@@ -97,45 +130,53 @@ export default function Examples() {
         </Grid>
         <Spacer y={2} />
         <Grid xs={12}>
-          <Text h3>IT Manager Positon at Google</Text>
+          <Text h3>Data Analyst Positon at Google</Text>
         </Grid>
         <Grid xs={12}></Grid>
         <Grid xs={12}>
           <Card style={{ padding: "20px 40px 20px 40px" }} css={{ width: 800 }}>
             <Card.Body css={{ py: "$10" }}>
               <Text>
-                Dear Google IT Manager,
+                Dear Google Recruiting Team,
                 <br />
-                <br />I am writing to apply for the IT Manager position at
-                Google. With my extensive experience in software engineering and
-                computer science, I believe I am the perfect fit for this role.
-                I have a Master of Science in Computer Science from Carnegie
-                Mellon University and a Bachelor of Engineering (Hons) in
-                Computer Science from Birla Institute of Technology and Science.
-                I am proficient in Java and have familiarity with Python, C,
-                SQL, JavaScript, MATLAB, and Perl. I am also experienced in
-                working with frameworks and tools such as Hadoop, Django, DKPro
-                for NLP, Maven, and Git. During my internship at Yahoo!, I
-                worked with the user data team and was able to develop a deep
-                understanding of cloud services. I also interned at Ubiquitous
-                Knowledge Processing Lab at TU Darmstadt, Germany where I
-                developed an application using the DKPro library to
-                automatically solve multiple choice reading comprehension
-                questions. I have also worked on several projects. I implemented
-                a Hadoop-like MapReduce facility, with master and worker nodes
-                for map-reduce operations over large datasets, with a
-                distributed file system, and fault tolerance to address data
-                node failures. I also used GIST descriptors and a Kernelized
-                (RBF) SVM to train a model using 4000 images for the CIFAR-10
-                dataset and obtained a test accuracy of 61%. Additionally, I
-                developed a priority-based auctioning algorithm for task
-                allocation in a multi-agent environment. I am confident that my
-                experience and qualifications make me an ideal candidate for the
-                IT Manager position at Google. I look forward to discussing my
-                qualifications further and I am excited to hear more about this
-                opportunity. <br />
+                <br />I am writing to express my interest in the Data Analyst
+                role at Google. I believe my academic background and
+                professional experience make me an ideal candidate for the
+                position.
                 <br />
-                Sincerely, Mack Crol
+                <br />I recently completed my Master of Science in Computer
+                Science from Carnegie Mellon University, where I had the
+                opportunity to take courses such as Introduction to Machine
+                Learning (10-601, Fall 2014) and Machine Learning with Large
+                Datasets (10-605, Spring 2015). I also have significant
+                experience in programming/scripting languages such as Java,
+                Python, C, SQL, Javascript, MATLAB, and Perl as well as
+                frameworks and tools such as Hadoop, Django, DKPro for NLP,
+                Maven, and Git.
+                <br />
+                <br />I have also had the opportunity to gain professional
+                experience while working with Yahoo!, the Ubiquitous Knowledge
+                Processing Lab at TU Darmstadt, the Computer Engineering and
+                Networks Laboratory at ETH Zurich, and National Resource for
+                Network Biology, where I developed applications in Java and
+                Python, and built an app for Cytoscape, an open-source software
+                for complex network visualization.
+                <br />
+                <br />I have also been involved in several projects, such as
+                implementing a Hadoop-like MapReduce facility with master and
+                worker nodes for map-reduce operations over large datasets,
+                recognizing objects using the CIFAR-10 dataset, and devising a
+                priority-based auctioning algorithm for task allocation in a
+                multi-agent environment.
+                <br />
+                <br />I am confident that my knowledge and experience in data
+                analysis, software engineering, and programming would be an
+                asset to Google. I look forward to discussing my qualifications
+                with you in more detail.
+                <br />
+                <br />
+                Sincerely, <br />
+                Mack Crol
               </Text>
             </Card.Body>
           </Card>
