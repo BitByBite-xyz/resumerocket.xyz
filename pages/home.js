@@ -18,6 +18,8 @@ import FileUpload from "../components/fileupload/FileUpload.js";
 import CoverLetter from "../components/coverletter/CoverLetter.js";
 
 export default function Home() {
+  const router = useRouter();
+
   const [text, setText] = useState("");
   const [fileName, setFileName] = useState("");
   const [file, setFile] = useState([]);
@@ -69,7 +71,7 @@ export default function Home() {
 
           // Call the Google Cloud Function with the file URL
           const apiUrl =
-            "https://us-central1-bitbybite-dotxyz.cloudfunctions.net/extractDocxText";
+            "https://us-central1-bitbybite-dotxyz.cloudfunctions.net/extractText";
           const response = await axios.get(apiUrl, {
             params: { path, jobTitle, company },
           });
@@ -79,7 +81,7 @@ export default function Home() {
           setLoading(false);
         });
       } else {
-        useRouter().push("/login");
+        router.push("/login");
       }
     });
   };
