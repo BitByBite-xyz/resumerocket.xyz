@@ -134,7 +134,11 @@ export default function CustomNavBar() {
               color="primary"
               onAction={handleAction}
             >
-              <Dropdown.Item key="profile" css={{ height: "$18" }}>
+              <Dropdown.Item
+                textValue="Signed in as"
+                key="profile"
+                css={{ height: "$18" }}
+              >
                 <Text b color="inherit" css={{ d: "flex" }}>
                   Signed in as
                 </Text>
@@ -142,16 +146,25 @@ export default function CustomNavBar() {
                   {user.email}
                 </Text>
               </Dropdown.Item>
-              <Dropdown.Item key="account" withDivider>
+              <Dropdown.Item textValue="Account" key="account" withDivider>
                 Account
               </Dropdown.Item>
-              <Dropdown.Item key="cover_letters">Cover Letters</Dropdown.Item>
-              <Dropdown.Item key="settings">Settings</Dropdown.Item>
-              <Dropdown.Item key="help_and_feedback" withDivider>
+              <Dropdown.Item textValue="Cover Letters" key="cover_letters">
+                Cover Letters
+              </Dropdown.Item>
+              <Dropdown.Item textValue="Settings" key="settings">
+                Settings
+              </Dropdown.Item>
+              <Dropdown.Item
+                textValue="Help & Feedback"
+                key="help_and_feedback"
+                withDivider
+              >
                 Help & Feedback
               </Dropdown.Item>
               <Dropdown.Item
-                onPress={signOut}
+                textValue="Log Out"
+                onClick={signOut}
                 key="logout"
                 withDivider
                 color="error"
