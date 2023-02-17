@@ -26,6 +26,7 @@ export default function Home() {
   const [company, setCompany] = useState("");
   const [jobTitle, setJobTitle] = useState("");
 
+  const [warning, setWarning] = useState("");
   const [loading, setLoading] = useState(false);
 
   const fileInput = useRef(null);
@@ -51,38 +52,46 @@ export default function Home() {
   };
 
   const handleSubmit = () => {
-    onAuthStateChanged(getAuth(), async (user) => {
-      if (user) {
-        const storageRef = ref(storage, `resumes/${user.uid}/${file.name}`);
-        const uploadTask = uploadBytesResumable(storageRef, file);
-        setLoading(true);
+    if (jobTitle !== "" && company !== "") {
+      setWarning("");
 
-        // Upload file to Firebase Storage
-        uploadBytesResumable(storageRef, file).then(async (snapshot) => {
-          // Get the download URL of the uploaded file
-          const path = `resumes/${user.uid}/${file.name}`;
+      onAuthStateChanged(getAuth(), async (user) => {
+        if (user) {
+          const storageRef = ref(storage, `resumes/${user.uid}/${file.name}`);
+          const uploadTask = uploadBytesResumable(storageRef, file);
+          setLoading(true);
 
-          // Call the Google Cloud Function with the file URL
-          const apiUrl =
-            "https://us-central1-bitbybite-dotxyz.cloudfunctions.net/extractDocxText";
-          const params = new URLSearchParams({ path, jobTitle, company });
+          // Upload file to Firebase Storage
+          uploadBytesResumable(storageRef, file).then(async (snapshot) => {
+            // Get the download URL of the uploaded file
+            const path = `resumes/${user.uid}/${file.name}`;
 
-          try {
-            const response = await fetch(`${apiUrl}?${params}`);
-            const data = await response.text();
+            // Call the Google Cloud Function with the file URL
+            const apiUrl =
+              "https://us-central1-bitbybite-dotxyz.cloudfunctions.net/extractDocxText";
+            const params = new URLSearchParams({ path, jobTitle, company });
 
-            // Set the text state to the response from the Google Cloud Function
-            setText(data);
-            setLoading(false);
-          } catch (error) {
-            setLoading(false);
-            console.error(error);
-          }
-        });
-      } else {
-        router.push("/login");
-      }
-    });
+            try {
+              const response = await fetch(`${apiUrl}?${params}`);
+              const data = await response.text();
+
+              // Set the text state to the response from the Google Cloud Function
+              setText(data);
+              setLoading(false);
+            } catch (error) {
+              setLoading(false);
+              console.error(error);
+            }
+          });
+        } else {
+          router.push("/login");
+        }
+      });
+    } else {
+      setWarning(
+        jobTitle === "" ? "Job title required" : "Company name required"
+      );
+    }
   };
 
   return (
@@ -106,6 +115,14 @@ export default function Home() {
           >
             <Card.Body css={{ py: "$10" }}>
               <Grid.Container>
+                {warning !== "" ? (
+                  <Text
+                    color="error"
+                    style={{ marginTop: -18, marginBottom: 12 }}
+                  >
+                    {warning}
+                  </Text>
+                ) : null}
                 <Grid xs={12}>
                   <Input
                     bordered
