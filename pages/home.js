@@ -13,6 +13,8 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../config/firebaseConfig.js";
 
+import mammoth from "mammoth";
+
 import FileUpload from "../components/fileupload/FileUpload.js";
 import CoverLetter from "../components/coverletter/CoverLetter.js";
 
@@ -20,6 +22,7 @@ export default function Home() {
   const router = useRouter();
 
   const [text, setText] = useState("");
+  const [resumeText, setResume] = useState("");
   const [fileName, setFileName] = useState("");
   const [file, setFile] = useState([]);
 
@@ -33,6 +36,7 @@ export default function Home() {
 
   const handleDrop = (event) => {
     let file;
+    const reader = new FileReader();
     event.preventDefault();
 
     if (event.dataTransfer !== undefined) {
@@ -42,6 +46,34 @@ export default function Home() {
     }
     setFile(file);
     setFileName(file.name);
+
+    // Extracting text from file
+    if (file.type === "text/plain") {
+      reader.readAsText(file);
+      reader.onload = () => {
+        const plainText = reader.result;
+        setResume(plainText);
+      };
+      reader.onerror = () => {
+        console.log("Error reading file");
+      };
+    } else if (
+      file.type ===
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+      file.type === "application/msword"
+    ) {
+      mammoth
+        .convertToHtml({ arrayBuffer: file })
+        .then((result) => {
+          const plainText = result.value.replace(/<\/?[^>]+(>|$)/g, "");
+          setResume(plainText);
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    } else {
+      console.log("Unsupported file type");
+    }
   };
 
   const handleClick = (event) => {
@@ -49,28 +81,26 @@ export default function Home() {
     fileInput.current.reset();
     setFileName("");
     setText("");
+    setResume("");
   };
 
-  const handleSubmit = () => {
-    if (jobTitle !== "" && company !== "") {
-      setWarning("");
-
+  const handleSubmit = async () => {
+    // Call the Google Cloud Function with the file URL
+    const apiUrl =
+      "https://us-central1-bitbybite-dotxyz.cloudfunctions.net/extractText";
+    const params = new URLSearchParams({
+      resumeText,
+      jobTitle,
+      company,
+    });
+    if (jobTitle !== "" && company !== "" && resumeText !== "") {
       onAuthStateChanged(getAuth(), async (user) => {
         if (user) {
-          const storageRef = ref(storage, `resumes/${user.uid}/${file.name}`);
-          const uploadTask = uploadBytesResumable(storageRef, file);
+          setWarning("");
           setLoading(true);
-
+          const storageRef = ref(storage, `resumes/${user.uid}/${file.name}`);
           // Upload file to Firebase Storage
           uploadBytesResumable(storageRef, file).then(async (snapshot) => {
-            // Get the download URL of the uploaded file
-            const path = `resumes/${user.uid}/${file.name}`;
-
-            // Call the Google Cloud Function with the file URL
-            const apiUrl =
-              "https://us-central1-bitbybite-dotxyz.cloudfunctions.net/extractDocxText";
-            const params = new URLSearchParams({ path, jobTitle, company });
-
             try {
               const response = await fetch(`${apiUrl}?${params}`);
               const data = await response.text();
