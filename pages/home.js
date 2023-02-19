@@ -35,43 +35,28 @@ export default function Home() {
   const fileInput = useRef(null);
 
   const handleDrop = (event) => {
-    let file;
-    const reader = new FileReader();
     event.preventDefault();
 
-    // Extracting file from event and saving it to state
-    if (event.dataTransfer !== undefined) {
-      file = event.dataTransfer.files[0];
-    } else if (event.target !== undefined) {
-      file = event.target.files[0];
-    }
+    const file = (event.dataTransfer || event.target).files[0];
     setFile(file);
     setFileName(file.name);
 
-    // Parsing text from file
     if (file.type === "text/plain") {
+      const reader = new FileReader();
       reader.readAsText(file);
-      reader.onload = () => {
-        const plainText = reader.result;
-        setResume(plainText);
-      };
-      reader.onerror = () => {
-        setWarning("Error reading file");
-      };
+      reader.onload = () => setResume(reader.result);
+      reader.onerror = () => setWarning("Error reading file");
     } else if (
-      file.type ===
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
-      file.type === "application/msword"
+      file.type.match(
+        /(application\/vnd\.openxmlformats-officedocument\.wordprocessingml\.document|application\/msword)/
+      )
     ) {
       mammoth
         .convertToHtml({ arrayBuffer: file })
-        .then((result) => {
-          const plainText = result.value.replace(/<\/?[^>]+(>|$)/g, "");
-          setResume(plainText);
-        })
-        .catch((error) => {
-          setWarning(error.message);
-        });
+        .then((result) =>
+          setResume(result.value.replace(/<\/?[^>]+(>|$)/g, ""))
+        )
+        .catch((error) => setWarning(error.message));
     } else {
       setWarning("File type must be .docx, .dox or .txt");
     }
@@ -86,48 +71,46 @@ export default function Home() {
   };
 
   const handleSubmit = async () => {
-    // Call the Google Cloud Function with the file URL
+    // API request URL and parameters
     const apiUrl =
       "https://us-central1-bitbybite-dotxyz.cloudfunctions.net/extractText";
-    const params = new URLSearchParams({
-      resumeText,
-      jobTitle,
-      company,
-    });
+    const params = new URLSearchParams({ resumeText, jobTitle, company });
 
-    if (jobTitle !== "" && company !== "" && resumeText !== "") {
-      onAuthStateChanged(getAuth(), async (user) => {
-        if (user) {
-          setWarning("");
-          setLoading(true);
-          const storageRef = ref(storage, `resumes/${user.uid}/${file.name}`);
-          // Upload file to Firebase Storage
-          uploadBytesResumable(storageRef, file).then(async (snapshot) => {
-            try {
-              const response = await fetch(`${apiUrl}?${params}`);
-              const data = await response.text();
+    // Check if all fields are filled
+    if (!jobTitle || !company || !resumeText) {
+      setWarning(
+        !jobTitle
+          ? "Job Title is required"
+          : !company
+          ? "Company is required"
+          : "Resume is required"
+      );
+      return;
+    }
 
-              // Set the text state to the response from the Google Cloud Function
-              setText(data);
-              setLoading(false);
-            } catch (error) {
-              setLoading(false);
-              setWarning(error.message);
-            }
-          });
-        } else {
-          router.push("/login");
-        }
-      });
-    } else {
-      // Set warning if any of the fields are empty
-      if (resumeText === "") {
-        setWarning("Resume is required");
-      } else if (company === "") {
-        setWarning("Company is required");
-      } else if (jobTitle === "") {
-        setWarning("Job Title is required");
-      }
+    // Check if user is logged in and redirect to login page if not
+    const user = getAuth().currentUser;
+    if (!user) {
+      router.push("/login");
+      return;
+    }
+
+    setWarning("");
+    setLoading(true);
+
+    try {
+      // Upload resume to Firebase Storage
+      const storageRef = ref(storage, `resumes/${user.uid}/${file.name}`);
+      await uploadBytesResumable(storageRef, file);
+
+      // Send API request to CF and fetch response
+      const response = await fetch(`${apiUrl}?${params}`);
+      const data = await response.text();
+      setText(data);
+    } catch (error) {
+      setWarning(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
