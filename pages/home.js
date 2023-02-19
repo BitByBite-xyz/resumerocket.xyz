@@ -39,6 +39,7 @@ export default function Home() {
     const reader = new FileReader();
     event.preventDefault();
 
+    // Extracting file from event and saving it to state
     if (event.dataTransfer !== undefined) {
       file = event.dataTransfer.files[0];
     } else if (event.target !== undefined) {
@@ -47,7 +48,7 @@ export default function Home() {
     setFile(file);
     setFileName(file.name);
 
-    // Extracting text from file
+    // Parsing text from file
     if (file.type === "text/plain") {
       reader.readAsText(file);
       reader.onload = () => {
@@ -55,7 +56,7 @@ export default function Home() {
         setResume(plainText);
       };
       reader.onerror = () => {
-        console.log("Error reading file");
+        setWarning("Error reading file");
       };
     } else if (
       file.type ===
@@ -69,7 +70,7 @@ export default function Home() {
           setResume(plainText);
         })
         .catch((error) => {
-          console.log(error.message);
+          setWarning(error.message);
         });
     } else {
       setWarning("File type must be .docx, .dox or .txt");
@@ -93,6 +94,7 @@ export default function Home() {
       jobTitle,
       company,
     });
+
     if (jobTitle !== "" && company !== "" && resumeText !== "") {
       onAuthStateChanged(getAuth(), async (user) => {
         if (user) {
@@ -110,7 +112,7 @@ export default function Home() {
               setLoading(false);
             } catch (error) {
               setLoading(false);
-              console.error(error);
+              setWarning(error.message);
             }
           });
         } else {
@@ -118,9 +120,14 @@ export default function Home() {
         }
       });
     } else {
-      setWarning(
-        jobTitle === "" ? "Job title required" : "Company name required"
-      );
+      // Set warning if any of the fields are empty
+      if (resumeText === "") {
+        setWarning("Resume is required");
+      } else if (company === "") {
+        setWarning("Company is required");
+      } else if (jobTitle === "") {
+        setWarning("Job Title is required");
+      }
     }
   };
 
