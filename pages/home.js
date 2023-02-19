@@ -72,7 +72,7 @@ export default function Home() {
           console.log(error.message);
         });
     } else {
-      console.log("Unsupported file type");
+      setWarning("File type must be .docx, .dox or .txt");
     }
   };
 
