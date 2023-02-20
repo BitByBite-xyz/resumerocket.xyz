@@ -19,7 +19,8 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
 } from "firebase/auth";
-import { fbapp } from "../../config/firebaseConfig";
+import { addDoc, getDoc, collection, doc } from "firebase/firestore";
+import { fbapp, database } from "../../config/firebaseConfig";
 import { GoogleIcon } from "../../assets/GoogleIcon.js";
 
 export default function Form(props) {
@@ -52,10 +53,16 @@ export default function Form(props) {
           email,
           password
         );
+        const user = userCredential.user;
+        addDoc(collection(database, "users"), {
+          email: user.email,
+          uid: user.uid,
+          membership: "none",
+        });
       }
-      const user = userCredential.user;
       router.push("/home");
     } catch (error) {
+      console.log(error);
       switch (error.code) {
         case "auth/user-not-found":
           setErrorMsg("User not found");
@@ -77,31 +84,32 @@ export default function Form(props) {
     setLoading(false);
   };
 
-  const loginWithGoogle = () => {
+  const loginWithGoogle = async () => {
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
 
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        // The signed-in user info.
-        const user = result.user;
-        // Login successful -> route to /home
-        router.push("/home");
-        // ...
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
-      });
+    try {
+      const { user } = await signInWithPopup(auth, provider);
+
+      const userRef = doc(database, "users", user.uid);
+      const docSnap = await getDoc(userRef);
+
+      if (!docSnap.exists()) {
+        await addDoc(collection(database, "users"), {
+          email: user.email,
+          uid: user.uid,
+          membership: "none",
+        });
+      }
+
+      router.push("/home");
+    } catch (error) {
+      console.log(error);
+      const { code, message, customData } = error;
+      const email = customData?.email;
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      // Handle errors here
+    }
   };
 
   // If user is logged in, redirect to /home
