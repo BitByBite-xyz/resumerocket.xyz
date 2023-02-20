@@ -35,55 +35,43 @@ export default function Form(props) {
 
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     const auth = getAuth();
-    if (props.action === "Login") {
-      // Login existing user
-      signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          // Signed in
-          const user = userCredential.user;
-          router.push("/home");
-          // ...
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-
-          switch (error.code) {
-            case "auth/user-not-found":
-              setErrorMsg("User not found");
-              break;
-            case "auth/wrong-password":
-              setErrorMsg("Wrong password");
-              break;
-          }
-        });
-    } else {
-      // Sign up new user
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          // Signed in
-          const user = userCredential.user;
-          router.push("/home");
-          // ...
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-
-          switch (error.code) {
-            case "auth/email-already-in-use":
-              setErrorMsg("Email already in use");
-              break;
-            case "auth/invalid-email":
-              setErrorMsg("Invalid email");
-              break;
-            case "auth/weak-password":
-              setErrorMsg("Weak password");
-              break;
-          }
-        });
+    try {
+      let userCredential;
+      if (props.action === "Login") {
+        userCredential = await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+      } else {
+        userCredential = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+      }
+      const user = userCredential.user;
+      router.push("/home");
+    } catch (error) {
+      switch (error.code) {
+        case "auth/user-not-found":
+          setErrorMsg("User not found");
+          break;
+        case "auth/wrong-password":
+          setErrorMsg("Wrong password");
+          break;
+        case "auth/email-already-in-use":
+          setErrorMsg("Email already in use");
+          break;
+        case "auth/invalid-email":
+          setErrorMsg("Invalid email");
+          break;
+        case "auth/weak-password":
+          setErrorMsg("Weak password");
+          break;
+      }
     }
   };
 
