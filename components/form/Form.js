@@ -37,6 +37,7 @@ export default function Form(props) {
 
   const handleSubmit = async (e) => {
     const auth = getAuth();
+    setLoading(true);
     try {
       let userCredential;
       if (props.action === "Login") {
@@ -73,6 +74,7 @@ export default function Form(props) {
           break;
       }
     }
+    setLoading(false);
   };
 
   const loginWithGoogle = () => {
