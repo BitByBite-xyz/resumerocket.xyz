@@ -74,7 +74,7 @@ export default function Home() {
   const handleSubmit = async () => {
     // API request URL and parameters
     const apiUrl =
-      "https://us-central1-bitbybite-dotxyz.cloudfunctions.net/generateCoverLetter";
+      "https://us-central1-bitbybite-dotxyz.cloudfunctions.net/extractText";
     const params = new URLSearchParams({ resumeText, jobTitle, company });
 
     // Check if all fields are filled
