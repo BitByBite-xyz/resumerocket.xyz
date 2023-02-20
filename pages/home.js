@@ -9,9 +9,10 @@ import {
   Spacer,
 } from "@nextui-org/react";
 import { useRouter } from "next/router.js";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { ref, uploadBytesResumable } from "firebase/storage";
-import { storage } from "../config/firebaseConfig.js";
+import { addDoc, collection, doc } from "firebase/firestore";
+import { storage, database } from "../config/firebaseConfig.js";
 
 import mammoth from "mammoth";
 
@@ -73,7 +74,7 @@ export default function Home() {
   const handleSubmit = async () => {
     // API request URL and parameters
     const apiUrl =
-      "https://us-central1-bitbybite-dotxyz.cloudfunctions.net/extractText";
+      "https://us-central1-bitbybite-dotxyz.cloudfunctions.net/generateCoverLetter";
     const params = new URLSearchParams({ resumeText, jobTitle, company });
 
     // Check if all fields are filled
@@ -106,8 +107,18 @@ export default function Home() {
       // Send API request to CF and fetch response
       const response = await fetch(`${apiUrl}?${params}`);
       const data = await response.text();
+
       setText(data);
+
+      const userDocRef = doc(database, "users", user.uid);
+      addDoc(collection(userDocRef, "cover_letters"), {
+        jobTitle: jobTitle,
+        company: company,
+        coverLetter: data,
+        createdAt: new Date(),
+      });
     } catch (error) {
+      console.log(error);
       setWarning(error.message);
     } finally {
       setLoading(false);
