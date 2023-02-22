@@ -62,6 +62,10 @@ export default function CustomNavBar() {
         break;
       case "settings":
         router.push("/settings");
+        break;
+      case "cover_letters":
+        router.push("/coverletters");
+        break;
     }
   };
 
