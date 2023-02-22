@@ -19,7 +19,7 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
 } from "firebase/auth";
-import { addDoc, getDoc, collection, doc } from "firebase/firestore";
+import { getDoc, setDoc, doc } from "firebase/firestore";
 import { fbapp, database } from "../../config/firebaseConfig";
 import { GoogleIcon } from "../../assets/GoogleIcon.js";
 
@@ -54,15 +54,11 @@ export default function Form(props) {
           password
         );
         const user = userCredential.user;
-        addDoc(
-          collection(database, "users"),
-          {
-            email: user.email,
-            uid: user.uid,
-            membership: "none",
-          },
-          user.uid
-        );
+        setDoc(doc(database, "users", user.uid), {
+          uid: user.uid,
+          email: user.email,
+          membership: "none",
+        });
       }
       router.push("/home");
     } catch (error) {
@@ -99,15 +95,11 @@ export default function Form(props) {
       const docSnap = await getDoc(userRef);
 
       if (!docSnap.exists()) {
-        await addDoc(
-          collection(database, "users"),
-          {
-            email: user.email,
-            uid: user.uid,
-            membership: "none",
-          },
-          user.uid
-        );
+        await setDoc(doc(database, "users", user.uid), {
+          uid: user.uid,
+          email: user.email,
+          membership: "none",
+        });
       }
 
       router.push("/home");
