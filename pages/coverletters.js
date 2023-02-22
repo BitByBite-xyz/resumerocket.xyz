@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { Grid, Text } from "@nextui-org/react";
+import { Grid, Text, Spacer } from "@nextui-org/react";
 import { useRouter } from "next/router";
 
 import { onAuthStateChanged, getAuth } from "firebase/auth";
@@ -39,9 +39,17 @@ export default function CoverLetters() {
         <Text h1>Cover Letters</Text>
       </Grid>
       {coverLetters.map((coverLetter) => (
-        <Grid xs={12} key={coverLetter.createdAt.toDate().getTime()}>
-          <CoverLetter text={coverLetter.coverLetter} />
-        </Grid>
+        <>
+          <Grid xs={12}>
+            <Text h3>
+              {coverLetter.jobTitle} position at {coverLetter.company}
+            </Text>
+          </Grid>
+          <Grid xs={12} key={coverLetter.createdAt.toDate().getTime()}>
+            <CoverLetter text={coverLetter.coverLetter} />
+          </Grid>
+          <Spacer y={1.5} />
+        </>
       ))}
     </Grid.Container>
   );

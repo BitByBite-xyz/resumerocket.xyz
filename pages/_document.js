@@ -1,6 +1,7 @@
 import React from "react";
 
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import Script from "next/script";
 import { CssBaseline } from "@nextui-org/react";
 
 class MyDocument extends Document {
@@ -85,6 +86,19 @@ class MyDocument extends Document {
           />
         </Head>
         <body>
+          <Script
+            src="https://www.googletagmanager.com/gtag/js?id=G-D6115F7N4Y"
+            strategy="afterInteractive"
+          />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-D6115F7N4Y');
+        `}
+          </Script>
           <Main />
           <NextScript />
         </body>
