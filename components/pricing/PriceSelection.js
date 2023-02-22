@@ -21,7 +21,7 @@ export default function PriceSelection(props) {
         <Text>{props.description}</Text>
         <Spacer y={1.5} />
         <form
-          action={`https://us-central1-bitbybite-dotxyz.cloudfunctions.net/createCheckoutSession?mode=${props.mode}?uid=${props.uid}`}
+          action={`https://us-central1-bitbybite-dotxyz.cloudfunctions.net/createCheckoutSession?mode=${props.mode}&uid=${props.uid}`}
           method="POST"
         >
           <Button type="submit" size="lg">
