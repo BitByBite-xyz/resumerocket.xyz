@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "ci": "next build"
+    "ci": "STRIPE_SECRET_KEY=\"fake_key_lol\" next build"
   },
   "dependencies": {
     "@next/font": "13.1.6",
