@@ -8,7 +8,7 @@ import Footer from "../components/footer/Footer.js";
 import Header from "../components/navbar";
 import Head from "next/head";
 
-import fbb from "../config/firebaseConfig.js";
+import { fbapp } from "../config/firebaseConfig.js";
 
 // 2. Call `createTheme` and pass your custom values
 const lightTheme = createTheme({
@@ -22,7 +22,7 @@ const darkTheme = createTheme({
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
     // Initialize Firebase
-    const auth = getAuth(fbb);
+    const auth = getAuth(fbapp);
   }, []);
 
   return (
