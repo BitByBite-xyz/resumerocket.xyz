@@ -56,6 +56,7 @@ export default function Form(props) {
         const user = userCredential.user;
         setDoc(doc(database, "users", user.uid), {
           uid: user.uid,
+          stripe_uid: "",
           email: user.email,
           membership: "none",
         });
@@ -97,6 +98,7 @@ export default function Form(props) {
       if (!docSnap.exists()) {
         await setDoc(doc(database, "users", user.uid), {
           uid: user.uid,
+          stripe_uid: "",
           email: user.email,
           membership: "none",
         });
