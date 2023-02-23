@@ -14,7 +14,6 @@ import { StyledBadge } from "../components/settings/StyledBadge";
 export default function Billing() {
   const auth = getAuth();
   const router = useRouter();
-  const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
   const [paymentHistory, setPaymentHistory] = useState([]);
 
@@ -28,17 +27,10 @@ export default function Billing() {
       const firebase_user = await getDoc(doc(database, "users", user.uid));
       const stripe_uid = firebase_user.data().stripe_uid;
 
-      const customer = await stripe.customers.retrieve(stripe_uid);
-      const payment_history = await stripe.paymentIntents.list({
-        customer: stripe_uid,
-      });
-      console.log(payment_history);
-
-      payment_history.data.forEach((payment) => {
-        payment.created = new Date(payment.created * 1000).toDateString();
-      });
-
-      setPaymentHistory(payment_history.data);
+      const url = `https://resumerocket-stripe-helper.files-bbb.workers.dev?stripe_uid=${stripe_uid}`;
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => setPaymentHistory(data));
     });
 
     return () => unsubscribe();
