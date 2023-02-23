@@ -17,7 +17,7 @@ export const StyledBadge = styled("span", {
   color: "$white",
   variants: {
     type: {
-      success: {
+      succeeded: {
         bg: "$successLight",
         color: "$successLightContrast",
       },
@@ -32,6 +32,6 @@ export const StyledBadge = styled("span", {
     },
   },
   defaultVariants: {
-    type: "success",
+    type: "succeeded",
   },
 });

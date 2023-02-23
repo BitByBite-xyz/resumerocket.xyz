@@ -52,7 +52,7 @@ export default function Billing() {
         <Table.Cell>{payment.created}</Table.Cell>
         <Table.Cell>${payment.amount / 100}</Table.Cell>
         <Table.Cell>
-          <StyledBadge type="success">Success</StyledBadge>
+          <StyledBadge type={payment.status}>{payment.status}</StyledBadge>
         </Table.Cell>
       </Table.Row>
     ));
