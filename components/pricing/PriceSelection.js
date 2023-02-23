@@ -1,5 +1,5 @@
 import { Card, Grid, Text, Button, Spacer } from "@nextui-org/react";
-import { getAuth } from "firebase/auth";
+
 export default function PriceSelection(props) {
   return (
     <Card css={{ mw: "300px", paddingLeft: "15px" }}>

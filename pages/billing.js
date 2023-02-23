@@ -1,8 +1,71 @@
-import { Table, Grid, Text, Row } from "@nextui-org/react";
+import Stripe from "stripe";
+
+import { useState, useEffect } from "react";
+import { Table, Grid, Text } from "@nextui-org/react";
+import { useRouter } from "next/router";
+
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getDoc, doc } from "firebase/firestore";
+import { database } from "../config/firebaseConfig";
+
 import SettingNav from "../components/settings/SettingNav";
 import { StyledBadge } from "../components/settings/StyledBadge";
 
 export default function Billing() {
+  const auth = getAuth();
+  const router = useRouter();
+  const stripe = Stripe(STRIPE_SECRET_KEY);
+
+  const [paymentHistory, setPaymentHistory] = useState([]);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        router.push("/login");
+        return;
+      }
+
+      const firebase_user = await getDoc(doc(database, "users", user.uid));
+      const stripe_uid = firebase_user.data().stripe_uid;
+
+      const customer = await stripe.customers.retrieve(stripe_uid);
+      const payment_history = await stripe.paymentIntents.list({
+        customer: stripe_uid,
+      });
+      console.log(payment_history);
+
+      payment_history.data.forEach((payment) => {
+        payment.created = new Date(payment.created * 1000).toDateString();
+      });
+
+      setPaymentHistory(payment_history.data);
+    });
+
+    return () => unsubscribe();
+  }, [auth]);
+
+  const renderPaymentHistory = () => {
+    if (paymentHistory.length === 0) {
+      return (
+        <Table.Row key="1">
+          <Table.Cell>No payments</Table.Cell>
+          <Table.Cell></Table.Cell>
+          <Table.Cell></Table.Cell>
+        </Table.Row>
+      );
+    }
+
+    return paymentHistory.map((payment) => (
+      <Table.Row key={payment.id}>
+        <Table.Cell>{payment.created}</Table.Cell>
+        <Table.Cell>${payment.amount / 100}</Table.Cell>
+        <Table.Cell>
+          <StyledBadge type="success">Success</StyledBadge>
+        </Table.Cell>
+      </Table.Row>
+    ));
+  };
+
   return (
     <Grid.Container>
       <Grid md={2} xs={4}>
@@ -27,36 +90,7 @@ export default function Billing() {
                 <Table.Column>Amount</Table.Column>
                 <Table.Column>Status</Table.Column>
               </Table.Header>
-              <Table.Body>
-                <Table.Row key="1">
-                  <Table.Cell>Dec 14th 2023</Table.Cell>
-                  <Table.Cell>$4.99</Table.Cell>
-                  <Table.Cell>
-                    <StyledBadge type="pending">Pending</StyledBadge>
-                  </Table.Cell>
-                </Table.Row>
-                <Table.Row key="2">
-                  <Table.Cell>Nov 8th 2023</Table.Cell>
-                  <Table.Cell>$4.99</Table.Cell>
-                  <Table.Cell>
-                    <StyledBadge type="success">Success</StyledBadge>
-                  </Table.Cell>
-                </Table.Row>
-                <Table.Row key="3">
-                  <Table.Cell>Oct 1st 2023</Table.Cell>
-                  <Table.Cell>$4.99</Table.Cell>
-                  <Table.Cell>
-                    <StyledBadge type="success">Success</StyledBadge>
-                  </Table.Cell>
-                </Table.Row>
-                <Table.Row key="4">
-                  <Table.Cell>Sep 23rd 2023</Table.Cell>
-                  <Table.Cell>$4.99</Table.Cell>
-                  <Table.Cell>
-                    <StyledBadge type="success">Success</StyledBadge>
-                  </Table.Cell>
-                </Table.Row>
-              </Table.Body>
+              <Table.Body>{renderPaymentHistory()}</Table.Body>
             </Table>
           </Grid>
         </Grid.Container>
