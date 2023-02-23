@@ -27,10 +27,11 @@ export default function Billing() {
       const firebase_user = await getDoc(doc(database, "users", user.uid));
       const stripe_uid = firebase_user.data().stripe_uid;
 
-      const url = `https://resumerocket-stripe-helper.files-bbb.workers.dev?stripe_uid=${stripe_uid}`;
-      fetch(url)
-        .then((response) => response.json())
-        .then((data) => setPaymentHistory(data));
+      const apiUrl = `https://us-central1-bitbybite-dotxyz.cloudfunctions.net/fetchPaymentHistory?stripe_uid=${stripe_uid}`;
+      const history = await fetch(apiUrl);
+      const result = await history.json();
+
+      setPaymentHistory(result.data);
     });
 
     return () => unsubscribe();
@@ -46,7 +47,6 @@ export default function Billing() {
         </Table.Row>
       );
     }
-
     return paymentHistory.map((payment) => (
       <Table.Row key={payment.id}>
         <Table.Cell>{payment.created}</Table.Cell>
