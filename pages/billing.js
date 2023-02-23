@@ -14,7 +14,7 @@ import { StyledBadge } from "../components/settings/StyledBadge";
 export default function Billing() {
   const auth = getAuth();
   const router = useRouter();
-  const stripe = Stripe(STRIPE_SECRET_KEY);
+  const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
   const [paymentHistory, setPaymentHistory] = useState([]);
 
