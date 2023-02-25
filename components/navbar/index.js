@@ -130,7 +130,11 @@ export default function CustomNavBar() {
           <Dropdown placement="bottom-right">
             <Navbar.Item>
               <Dropdown.Trigger>
-                <Avatar color="primary" text="J" textColor="white" />
+                <Avatar
+                  color="primary"
+                  text={user.email.charAt(0).toUpperCase()}
+                  textColor="white"
+                />
               </Dropdown.Trigger>
             </Navbar.Item>
             <Dropdown.Menu
