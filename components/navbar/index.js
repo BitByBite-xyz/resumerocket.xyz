@@ -9,7 +9,7 @@ import {
 } from "@nextui-org/react";
 import { useRouter } from "next/router";
 
-import { AcmeLogo } from "./Logo.js";
+import { ResumeRocketLogo } from "./Logo.js";
 
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import { fbapp } from "../../config/firebaseConfig";
@@ -73,7 +73,7 @@ export default function CustomNavBar() {
     <Navbar isCompact isBordered variant="sticky">
       <Navbar.Brand onClick={() => router.push("/")}>
         <Navbar.Toggle showIn="xs" aria-label="toggle navigation" />
-        <AcmeLogo />
+        <ResumeRocketLogo />
         <Text b color="inherit" hideIn="xs">
           Resume Rocket
         </Text>
