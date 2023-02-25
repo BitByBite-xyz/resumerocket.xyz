@@ -26,12 +26,13 @@ export default function Billing() {
 
       const firebase_user = await getDoc(doc(database, "users", user.uid));
       const stripe_uid = firebase_user.data().stripe_uid;
+      if (stripe_uid !== "") {
+        const apiUrl = `https://us-central1-bitbybite-dotxyz.cloudfunctions.net/fetchPaymentHistory?stripe_uid=${stripe_uid}`;
+        const history = await fetch(apiUrl);
+        const result = await history.json();
 
-      const apiUrl = `https://us-central1-bitbybite-dotxyz.cloudfunctions.net/fetchPaymentHistory?stripe_uid=${stripe_uid}`;
-      const history = await fetch(apiUrl);
-      const result = await history.json();
-
-      setPaymentHistory(result.data);
+        setPaymentHistory(result.data);
+      }
     });
 
     return () => unsubscribe();
