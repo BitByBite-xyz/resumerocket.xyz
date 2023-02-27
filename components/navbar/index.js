@@ -105,6 +105,15 @@ export default function CustomNavBar() {
         >
           Examples
         </Navbar.Link>
+        <Navbar.Link
+          key="blog"
+          isActive={pathname === "/blog"}
+          onPress={() => {
+            router.push("/blog");
+          }}
+        >
+          Blog
+        </Navbar.Link>
       </Navbar.Content>
 
       {user.email === "" ? (
@@ -216,6 +225,17 @@ export default function CustomNavBar() {
             onPress={() => router.push("/login")}
           >
             Examples
+          </Link>
+        </Navbar.CollapseItem>
+        <Navbar.CollapseItem>
+          <Link
+            color="inherit"
+            css={{
+              minWidth: "100%",
+            }}
+            onPress={() => router.push("/blog")}
+          >
+            Blog
           </Link>
         </Navbar.CollapseItem>
       </Navbar.Collapse>
