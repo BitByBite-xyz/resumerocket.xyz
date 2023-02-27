@@ -13,12 +13,12 @@ export default function Blog() {
           <Grid xs={8}>
             <Text p size="$lg">
               When it comes to landing your dream job, your resume is often the
-              first impression you'll make on potential employers. It's
-              essential to ensure that your resume presents your qualifications,
-              skills, and achievements in the best possible light. However, even
-              the smallest errors or mistakes can cost you the job you've been
-              dreaming of. Here are five common resume mistakes that could be
-              costing you your dream job.
+              first impression you&apos;ll make on potential employers.
+              It&apos;s essential to ensure that your resume presents your
+              qualifications, skills, and achievements in the best possible
+              light. However, even the smallest errors or mistakes can cost you
+              the job you&apos;ve been dreaming of. Here are five common resume
+              mistakes that could be costing you your dream job.
               <br />
               <br />
               <b>
@@ -40,22 +40,23 @@ export default function Blog() {
               appeal to too many job openings with a single resume. A scattered
               or unfocused resume can give the impression that you lack
               direction or are unsure of what you want. Instead, tailor your
-              resume to the specific job you're applying for. Customize it by
-              highlighting relevant skills and experiences that match the job
-              requirements. This will show employers that you're focused and
-              have the skills they're looking for.
+              resume to the specific job you&apos;re applying for. Customize it
+              by highlighting relevant skills and experiences that match the job
+              requirements. This will show employers that you&apos;re focused
+              and have the skills they&apos;re looking for.
               <br />
               <br />
               <b>3. Including Irrelevant Information</b>
               <br />
               <br />
               While you want your resume to be comprehensive, including
-              irrelevant information can work against you. For instance, it's
-              not necessary to include your high school achievements if you've
-              already graduated from college. Similarly, if you're applying for
-              a job in marketing, your experience in retail sales may not be
-              relevant. Keep your resume focused on the skills and experiences
-              that are relevant to the job you're applying for.
+              irrelevant information can work against you. For instance,
+              it&apos;s not necessary to include your high school achievements
+              if you&apos;ve already graduated from college. Similarly, if
+              you&apos;re applying for a job in marketing, your experience in
+              retail sales may not be relevant. Keep your resume focused on the
+              skills and experiences that are relevant to the job you&apos;re
+              applying for.
               <br />
               <br />
               <b>4. Using Buzzwords and Clichés</b>
@@ -63,11 +64,11 @@ export default function Blog() {
               <br />
               Using buzzwords and clichés can be tempting, but it can also make
               your resume appear generic and unremarkable. Words like "team
-              player" and "detail-oriented" are so overused that they've lost
-              their meaning. Instead, focus on specific achievements that
-              showcase your skills. For instance, rather than saying you're a
-              "problem solver," provide examples of how you solved a particular
-              problem or challenge in your previous job.
+              player" and "detail-oriented" are so overused that they&apos;ve
+              lost their meaning. Instead, focus on specific achievements that
+              showcase your skills. For instance, rather than saying you&apos;re
+              a "problem solver," provide examples of how you solved a
+              particular problem or challenge in your previous job.
               <br />
               <br />
               <b>5. Lack of Quantifiable Results</b>
@@ -75,9 +76,9 @@ export default function Blog() {
               <br />
               Employers want to see measurable results on your resume. They want
               to know what you achieved and how you contributed to your previous
-              organization's success. Including quantifiable results in your
-              resume, such as revenue growth, percentage increase in sales, or
-              cost savings, can give potential employers a clear idea of what
+              organization&apos;s success. Including quantifiable results in
+              your resume, such as revenue growth, percentage increase in sales,
+              or cost savings, can give potential employers a clear idea of what
               you can bring to their organization.
             </Text>
             <Spacer y={3} />
