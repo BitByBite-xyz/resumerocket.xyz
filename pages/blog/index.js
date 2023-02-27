@@ -9,8 +9,7 @@ export default function Blog() {
       </Grid>
       <Grid xs={12}>
         <Text h5>
-          Ipsum lorem dolor sit amet, consectetur adipiscing elit. Sed euismod
-          nunc ac
+          Unlock the Power of Your Resume with Expert Tips and Insights
         </Text>
         <Spacer y={3} />
       </Grid>
