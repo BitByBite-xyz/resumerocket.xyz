@@ -63,12 +63,13 @@ export default function Blog() {
               <br />
               <br />
               Using buzzwords and clichés can be tempting, but it can also make
-              your resume appear generic and unremarkable. Words like "team
-              player" and "detail-oriented" are so overused that they&apos;ve
-              lost their meaning. Instead, focus on specific achievements that
-              showcase your skills. For instance, rather than saying you&apos;re
-              a "problem solver," provide examples of how you solved a
-              particular problem or challenge in your previous job.
+              your resume appear generic and unremarkable. Words like &quot;team
+              player&quot; and &quot;detail-oriented&quot; are so overused that
+              they&apos;ve lost their meaning. Instead, focus on specific
+              achievements that showcase your skills. For instance, rather than
+              saying you&apos;re a &quot;problem solver,&quot; provide examples
+              of how you solved a particular problem or challenge in your
+              previous job.
               <br />
               <br />
               <b>5. Lack of Quantifiable Results</b>
