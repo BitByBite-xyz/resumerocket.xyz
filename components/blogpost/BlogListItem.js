@@ -1,4 +1,4 @@
-import { Card, Link, Text, Row, Spacer } from "@nextui-org/react";
+import { Image, Card, Link, Text, Row, Spacer } from "@nextui-org/react";
 import { useRouter } from "next/router";
 
 export default function BlogListItem(props) {
@@ -31,7 +31,7 @@ export default function BlogListItem(props) {
                 paddingRight: 20,
               }}
             >
-              <img
+              <Image
                 src={props.image}
                 alt="your image"
                 style={{ height: "100%", borderRadius: 10 }}

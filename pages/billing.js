@@ -1,5 +1,3 @@
-import Stripe from "stripe";
-
 import { useState, useEffect } from "react";
 import { Table, Grid, Text } from "@nextui-org/react";
 import { useRouter } from "next/router";
@@ -36,7 +34,7 @@ export default function Billing() {
     });
 
     return () => unsubscribe();
-  }, [auth]);
+  }, [auth, router]);
 
   const renderPaymentHistory = () => {
     if (paymentHistory.length === 0) {
