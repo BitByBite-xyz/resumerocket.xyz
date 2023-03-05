@@ -1,7 +1,7 @@
 import { Card, Link, Text, Row, Spacer } from "@nextui-org/react";
 import { useRouter } from "next/router";
 
-export default function CheckoutForm(props) {
+export default function BlogListItem(props) {
   const router = useRouter();
 
   return (
