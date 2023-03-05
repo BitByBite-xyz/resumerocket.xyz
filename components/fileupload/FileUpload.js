@@ -1,5 +1,5 @@
 import { Card, Grid, Text, Link } from "@nextui-org/react";
-import { DeleteIcon } from "./DeleteIcon";
+import { DeleteIcon } from "../../assets/DeleteIcon";
 import { IconButton } from "./IconButton";
 
 export default function FileUpload(props) {
