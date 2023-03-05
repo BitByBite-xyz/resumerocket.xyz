@@ -9,7 +9,7 @@ import {
 } from "@nextui-org/react";
 import { useRouter } from "next/router";
 
-import { ResumeRocketLogo } from "./Logo.js";
+import { ResumeRocketLogo } from "../../assets/Logo.js";
 
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import { fbapp } from "../../config/firebaseConfig";
