@@ -1,8 +1,23 @@
+import { useState, useEffect } from "react";
 import { Text, Grid, Button, Spacer, Card } from "@nextui-org/react";
 import { useRouter } from "next/router";
+import { getAuth } from "firebase/auth";
 
 export default function Index() {
   const router = useRouter();
+  const [userID, setUserID] = useState(null);
+
+  useEffect(() => {
+    const auth = getAuth();
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUserID(user.uid);
+      } else {
+        setUserID(null);
+      }
+    });
+  }, []);
+
   return (
     <>
       <Grid.Container gap={2}>
@@ -26,7 +41,13 @@ export default function Index() {
           </Text>
         </Grid>
         <Grid xs={12}>
-          <Button onPress={() => router.push("/home")}>Get Started</Button>
+          <Button
+            onPress={() =>
+              userID !== null ? router.push("/home") : router.push("/login")
+            }
+          >
+            Get Started
+          </Button>
         </Grid>
         <Spacer y={2} />
         <Grid xs={12}>
