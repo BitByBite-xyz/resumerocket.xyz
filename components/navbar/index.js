@@ -80,9 +80,9 @@ export default function CustomNavBar() {
       </Navbar.Brand>
       <Navbar.Content hideIn="xs" variant="underline">
         <Navbar.Link
-          onPress={() => {
-            router.push("/home");
-          }}
+          onPress={() =>
+            user.uid !== "" ? router.push("/home") : router.push("/login")
+          }
           isActive={pathname == "/home"}
         >
           Create a Cover Letter
@@ -200,7 +200,9 @@ export default function CustomNavBar() {
             css={{
               minWidth: "100%",
             }}
-            onPress={() => router.push("/home")}
+            onPress={() =>
+              user.uid !== "" ? router.push("/home") : router.push("/login")
+            }
           >
             Create a Cover Letter
           </Link>
