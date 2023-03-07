@@ -1,6 +1,6 @@
 import jsPDF from "jspdf";
 
-import { Card, Text } from "@nextui-org/react";
+import { Card, Text, Tooltip } from "@nextui-org/react";
 import { IconButton } from "../fileupload/IconButton";
 import { DownloadIcon } from "./DownloadIcon";
 
@@ -33,11 +33,13 @@ export default function CoverLetter(props) {
   }
 
   return (
-    <Card style={{ padding: "20px 40px 20px 40px" }} css={{ width: 800 }}>
-      <IconButton style={{ marginLeft: "93%", marginTop: 10 }}>
-        <DownloadIcon onClick={createPDF} size={20} fill="#FF0080" />
-      </IconButton>
+    <Card style={{ padding: "8px 40px 20px 40px" }} css={{ width: 800 }}>
       <Card.Body css={{ py: "$10" }}>
+        <IconButton style={{ marginLeft: "93%", marginTop: 10 }}>
+          <Tooltip content="Download PDF" color="invert" placement="bottom">
+            <DownloadIcon onClick={createPDF} size={20} fill="#FF0080" />
+          </Tooltip>
+        </IconButton>
         <Text>
           {props.text.split("\n").map((line, index) => (
             <span key={index}>

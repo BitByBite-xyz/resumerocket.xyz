@@ -46,7 +46,11 @@ export default function CoverLetters() {
             </Text>
           </Grid>
           <Grid xs={12} key={coverLetter.createdAt.toDate().getTime()}>
-            <CoverLetter text={coverLetter.coverLetter} />
+            <CoverLetter
+              text={coverLetter.coverLetter}
+              jobTitle={coverLetter.jobTitle}
+              company={coverLetter.company}
+            />
           </Grid>
           <Spacer y={1.5} />
         </>
