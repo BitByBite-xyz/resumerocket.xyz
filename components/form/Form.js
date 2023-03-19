@@ -19,8 +19,8 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
 } from "firebase/auth";
-import { getDoc, setDoc, doc } from "firebase/firestore";
-import { fbapp, database } from "../../config/firebaseConfig";
+// import { getDoc, setDoc, doc } from "firebase/firestore";
+// import { fbapp, database } from "../../config/firebaseConfig";
 import { GoogleIcon } from "../../assets/GoogleIcon.js";
 
 export default function Form(props) {
@@ -115,8 +115,8 @@ export default function Form(props) {
   };
 
   // If user is logged in, redirect to /home
-  const authh = getAuth(fbapp);
-  onAuthStateChanged(getAuth(), (user) => (user ? router.push("/home") : null));
+  // const authh = getAuth(fbapp);
+  // onAuthStateChanged(getAuth(), (user) => (user ? router.push("/home") : null));
 
   return (
     <Card style={{ paddingLeft: 23, marginTop: "10%" }} css={{ mw: "400px" }}>

@@ -1,24 +1,8 @@
-import { useState, useEffect } from "react";
 import { Text, Grid, Button, Spacer, Card } from "@nextui-org/react";
 import { useRouter } from "next/router";
-import { getAuth } from "firebase/auth";
-
-import Astronaut from "../components/astronaut/astronaut";
 
 export default function Index() {
   const router = useRouter();
-  const [userID, setUserID] = useState(null);
-
-  useEffect(() => {
-    const auth = getAuth();
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        setUserID(user.uid);
-      } else {
-        setUserID(null);
-      }
-    });
-  }, []);
 
   return (
     <>
@@ -63,10 +47,7 @@ export default function Index() {
             Get Started
           </Button>
         </Grid>
-        <Grid md={5}>
-          <Astronaut />
-        </Grid>
-        <Grid.Container style={{ marginTop: "-10%" }}>
+        <Grid.Container>
           <Grid xs={12}>
             <Text h2>Examples</Text>
           </Grid>
