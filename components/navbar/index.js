@@ -9,9 +9,10 @@ import {
 } from "@nextui-org/react";
 import { useRouter } from "next/router";
 
-// import { ResumeRocketLogo } from "../../assets/Logo.js";
+import { ResumeRocketLogo } from "../../assets/Logo.js";
 
-// import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
+import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
+import { fbapp } from "../../config/firebaseConfig";
 
 export default function CustomNavBar() {
   const router = useRouter();
@@ -22,8 +23,23 @@ export default function CustomNavBar() {
     uid: "",
   });
 
-  //   const authh = getAuth(fbapp);
-  //   const auth = getAuth();
+  const authh = getAuth(fbapp);
+  const auth = getAuth();
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in
+      if (user.email !== "") {
+        setUser({
+          email: user.email,
+          uid: user.uid,
+        });
+      }
+    } else {
+      console.log("uid is none");
+      // User is signed out
+    }
+  });
 
   const handleAction = (actionKey) => {
     switch (actionKey) {
@@ -57,7 +73,7 @@ export default function CustomNavBar() {
     <Navbar isCompact isBordered variant="sticky">
       <Navbar.Brand onClick={() => router.push("/")}>
         <Navbar.Toggle showIn="xs" aria-label="toggle navigation" />
-        {/* <ResumeRocketLogo /> */}
+        <ResumeRocketLogo />
         <Text b color="inherit" hideIn="xs">
           Resume Rocket
         </Text>

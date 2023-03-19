@@ -1,9 +1,9 @@
 import { Grid, Text, Spacer } from "@nextui-org/react";
-// import { getAuth } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import PriceSelection from "../components/pricing/PriceSelection.js";
 
 export default function Pricing() {
-  // const auth = getAuth();
+  const auth = getAuth();
 
   return (
     <>
@@ -17,7 +17,7 @@ export default function Pricing() {
             amount="cover letter"
             description="A fixed price for each custom-tailored cover letters generated at the power of a few clicks."
             mode="payment"
-            // uid={auth.currentUser?.uid}
+            uid={auth.currentUser?.uid}
           />
         </Grid>
         <Grid md={4} xs={12}>
@@ -27,7 +27,7 @@ export default function Pricing() {
             amount="month"
             description="Unlimited custom-tailored cover letter generated at the power of a few clicks."
             mode="subscription"
-            // uid={auth.currentUser?.uid}
+            uid={auth.currentUser?.uid}
           />
         </Grid>
       </Grid.Container>

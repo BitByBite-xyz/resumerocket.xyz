@@ -1,9 +1,14 @@
+import { useEffect } from "react";
 import { createTheme, NextUIProvider, Spacer } from "@nextui-org/react";
+
+import { getAuth } from "firebase/auth";
 
 import { Box } from "../components/layout/Box.js";
 import Footer from "../components/footer/Footer.js";
 import Header from "../components/navbar";
 import Head from "next/head";
+
+import { fbapp } from "../config/firebaseConfig.js";
 
 // 2. Call `createTheme` and pass your custom values
 const lightTheme = createTheme({
@@ -15,6 +20,11 @@ const darkTheme = createTheme({
 });
 
 function MyApp({ Component, pageProps }) {
+  useEffect(() => {
+    // Initialize Firebase
+    const auth = getAuth(fbapp);
+  }, []);
+
   return (
     <>
       <Head>

@@ -76,17 +76,17 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
           />
           <meta property="og:type" content="website" />
-          <meta property="og:title" content="Casely" />
-          <meta property="og:description" content="Casely beta" />
-          <meta property="og:site_name" content="Casely" />
-          <meta property="og:url" content="https://casely.app" />
+          <meta property="og:title" content="ResumeRocket" />
+          <meta property="og:description" content="ResumeRocket beta" />
+          <meta property="og:site_name" content="ResumeRocket" />
+          <meta property="og:url" content="https://resumerocket.xyz" />
           <meta
             property="og:image"
             content="https://upload.wikimedia.org/wikipedia/commons/0/08/Circle-icons-rocket.svg"
           />
         </Head>
         <body>
-          {/* <Script
+          <Script
             src="https://www.googletagmanager.com/gtag/js?id=G-D6115F7N4Y"
             strategy="afterInteractive"
           />
@@ -98,7 +98,7 @@ class MyDocument extends Document {
 
           gtag('config', 'G-D6115F7N4Y');
         `}
-          </Script> */}
+          </Script>
           <Main />
           <NextScript />
         </body>

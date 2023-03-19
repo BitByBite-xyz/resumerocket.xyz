@@ -1,5 +1,5 @@
 {
-  "name": "casely.app",
+  "name": "resumerocket.xyz",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -10,20 +10,20 @@
     "ci": "STRIPE_SECRET_KEY=\"fake_key_lol\" next build"
   },
   "dependencies": {
-    "@babel/runtime": "^7.21.0",
     "@next/font": "13.2.0",
     "@nextui-org/react": "^1.0.0-beta.12",
-    "core-js": "^3.29.1",
     "cors": "^2.8.5",
     "eslint": "8.34.0",
     "eslint-config-next": "13.2.0",
     "firebase": "^9.17.1",
+    "jspdf": "^2.5.1",
+    "mammoth": "^1.5.1",
     "next": "13.2.0",
     "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-lottie": "^1.2.3",
-    "regenerator-runtime": "^0.13.11"
+    "stripe": "^11.11.0"
   },
   "devDependencies": {
     "@types/node": "18.14.1",
